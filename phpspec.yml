@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: symi
+        psr4_prefix: symi
+        src_path: app
