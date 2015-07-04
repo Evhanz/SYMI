@@ -7,10 +7,16 @@
  */
 
 namespace Symi\Repositories;
+use Symi\Entities\Persona;
+
+class PersonaRep  {
+
+    public function all(){
+        $persona = Persona::all();
+        return $persona;
+    }
 
 
-use Illuminate\Database\Eloquent\Model;
 
-class PersonaRep extends Model {
 
 }

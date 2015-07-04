@@ -96,7 +96,7 @@
 <h4 class="ui horizontal header divider">
     <i class="bar chart icon"></i>
     Form Barras
-</h4>
+</h4><
 <br>
 
 <div class="ui grid" >

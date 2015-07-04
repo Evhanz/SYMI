@@ -13,6 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CostoHombre extends Model{
 
-    protected $table = '';
+    protected $table = 'costo_hombres';
 
 }
