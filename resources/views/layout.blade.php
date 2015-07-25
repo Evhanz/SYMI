@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es"  >
 <head>
     <title></title>
     <!-- CSS Semantic -->
@@ -17,6 +17,9 @@
 
     <!-- JS Semantic -->
     <script src="{{ asset('js/dist/semantic.js') }}"></script>
+
+
+
 </head>
 <body>
 <nav class="ui inverted menu" id="menuP">
@@ -188,6 +191,8 @@
 <!--Importacion de mod-->
 <script src="{{ asset('js/mods/main/main.js') }}">
 </script>
+<!--Global functions JS-->
+<script src="{{ asset('js/global.js') }}"></script>
 
 </html>
 
@@ -352,7 +357,7 @@
 
     #tableReq > thead > tr > th{
 
-        background-color: #f43;
+        background-color: #3B97C7;
         color: #fff;
     }
 

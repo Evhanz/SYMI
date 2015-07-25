@@ -17,6 +17,7 @@ class CreateProformasTable extends Migration {
         {
             $table->increments('id');
             $table->string('numero');
+            $table->string('descripcion');
             $table->decimal('monto_MO');
 
             $table->date('f_inicio')->nullable();

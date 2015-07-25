@@ -13,4 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model{
 
+    public function personal(){
+        return $this->belongsToMany('Symi\Entities\Persona')->withPivot('f_inicio','f_fin','estado','tipo');
+    }
+
+
 }

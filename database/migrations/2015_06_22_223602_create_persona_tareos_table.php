@@ -17,6 +17,7 @@ class CreatePersonaTareosTable extends Migration {
         {
             $table->increments('id');
             $table->string('h_trabajadas');
+            $table->decimal('costo_h',9,2);
             //relaciones
 
 
@@ -28,9 +29,6 @@ class CreatePersonaTareosTable extends Migration {
             //to belongs
             $table->integer('proforma_id')->unsigned();
             $table->foreign('proforma_id')->references('id')->on('proformas');
-            $table->integer('costoHombre_id')->unsigned();
-            $table->foreign('costoHombre_id')->references('id')->on('costo_hombres');
-
 
 
 

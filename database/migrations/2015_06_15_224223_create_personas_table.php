@@ -20,11 +20,11 @@ class CreatePersonasTable extends Migration {
             $table->string('apellidoP');
             $table->string('apellidoM');
             $table->string('dni');
+            $table->string('celular');
             $table->boolean('estado');
+            $table->decimal('costo_h',9,2)->nullable()->default(NULL);
 
             //relaciones
-            $table->integer('costo_hombre_id')->unsigned();
-            $table->foreign('costo_hombre_id')->references('id')->on('costo_hombres');
 
             $table->integer('profesion_id')->unsigned();
             $table->foreign('profesion_id')->references('id')->on('profesiones');

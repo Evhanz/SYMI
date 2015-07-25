@@ -19,7 +19,11 @@ class CreateAreasTable extends Migration {
             $table->string('descripcion');
             $table->string('observacion')->nullable();
 
-
+            //relacion
+            /*
+            $table->integer('encargado_id')->unsigned();
+            $table->foreign('encargado_id')->references('id')->on('personas');
+            */
             $table->timestamps();
 
         });
