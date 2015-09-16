@@ -20,8 +20,8 @@ class CreateTareosTable extends Migration {
             $table->string('observacion')->nullable();
 
             //relaciones
-            $table->integer('supervisor_id')->unsigned();
-            $table->foreign('supervisor_id')->references('id')->on('personas');
+            $table->integer('area_id')->unsigned();
+            $table->foreign('area_id')->references('id')->on('areas');
 
 
             $table->timestamps();
@@ -30,7 +30,7 @@ class CreateTareosTable extends Migration {
 	}
 
 	/**
-	 * Reverse the migrations.
+	 * Reverse the migrations.r
 	 *
 	 * @return void
 	 */

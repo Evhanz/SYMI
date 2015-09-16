@@ -16,8 +16,15 @@ class PersonaRep  {
         return $persona;
     }
 
+    public function find($id)
+    {
+        $persona = Persona::find($id);
+        return $persona;
+    }
+
+    /*se envia todo el personal*/
     public function getAllPersonas(){
-        $persona = Persona::paginate(10);
+        $persona = Persona::orderBy('nombres', 'asc')->paginate(10);
         return $persona;
     }
 
@@ -48,7 +55,7 @@ class PersonaRep  {
                 $query->where('nombres', 'like',$criterio);
                 $query->orWhere('apellidoP', 'like',$criterio);
                 $query->orWhere('apellidoM', 'like',$criterio);
-            })->paginate(10);
+            })->orderBy('nombres', 'asc')->paginate(10);
 
         }else{
 
@@ -57,7 +64,7 @@ class PersonaRep  {
                 $query->where('nombres', 'like',$criterio);
                 $query->orWhere('apellidoP', 'like',$criterio);
                 $query->orWhere('apellidoM', 'like',$criterio);
-            })->paginate(10);
+            })->orderBy('nombres', 'asc')->paginate(10);
 
         }
 
@@ -67,14 +74,16 @@ class PersonaRep  {
     public function regPersona($data){
 
         $profesion = $data['profesion'];
+        $fotocheck = $data['fotocheck'];
+        $costo_h = $data['costo_h'];
 
         $rules=[
 
             'nombres' => 'required|min:4',
             'apellidoP' => 'required|min:4',
             'apellidoM' => 'required|min:4',
-            'dni' => 'required|min:8|numeric',
-            'celular' => 'min:7',
+            'dni' => 'required|min:8|numeric|unique:personas',
+            'celular' => 'min:7'
 
         ];
 
@@ -84,10 +93,11 @@ class PersonaRep  {
         $isValid = $validation->passes();
 
         if($isValid){
-
             $persona = new Persona($data);
             $persona->estado = true;
             $persona->profesion_id = $profesion;
+            $persona->fotocheck = $fotocheck;
+            $persona->costo_h = $costo_h;
             $persona->save();
             return 1;
 
@@ -96,6 +106,60 @@ class PersonaRep  {
         {
             return $validation->messages();
         }
+    }
+
+    public function editPersonal($data){
+
+        $profesion = $data['profesion'];
+        $fotocheck = $data['fotocheck'];
+        $costo_h = $data['costo_h'];
+        $id = $data['id'];
+
+        $rules=[
+
+            'nombres' => 'required|min:4',
+            'apellidoP' => 'required|min:4',
+            'apellidoM' => 'required|min:4',
+            'dni' => 'required|min:8|numeric|unique:personas,dni,'.$data['id'],
+            'celular' => 'min:7'
+
+        ];
+
+        $data = array_only($data,array_keys($rules));
+        $validation = \Validator::make($data,$rules);
+
+        $isValid = $validation->passes();
+
+        if($isValid){
+            $persona = Persona::find($id);
+            $persona->nombres = $data['nombres'];
+            $persona->apellidoP = $data['apellidoP'];
+            $persona->apellidoM = $data['apellidoM'];
+            $persona->dni = $data['dni'];
+            $persona->celular = $data['celular'];
+            $persona->estado = true;
+            $persona->profesion_id = $profesion;
+            $persona->fotocheck = $fotocheck;
+            $persona->costo_h = $costo_h;
+            $persona->save();
+            return 1;
+
+        }else
+        {
+            return $validation->messages();
+        }
+    }
+
+
+
+    /*funcion para pruebas de ordenamiento*/
+
+    public function orderPersonal()
+    {
+        
+        $personas = Persona::orderBy('nombres', 'asc')->paginate(10);
+        return $personas;
+
     }
 
 }

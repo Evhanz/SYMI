@@ -14,7 +14,7 @@ class CreateProformaTareosTable extends Migration {
 	{
 		//
 
-        Schema::create('proforma_tareos',function(Blueprint $table)
+        Schema::create('proforma_tareo',function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('avance_ref');
@@ -38,7 +38,7 @@ class CreateProformaTareosTable extends Migration {
 	public function down()
 	{
 		//
-        Schema::drop('proforma_tareos');
+        Schema::drop('proforma_tareo');
 	}
 
 }

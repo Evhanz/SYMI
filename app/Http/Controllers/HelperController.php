@@ -8,14 +8,17 @@
 
 namespace symi\Http\Controllers;
 use Symi\Repositories\PersonaRep;
+use Symi\Repositories\ProformaRep;
 
 
 class HelperController extends Controller{
 
     public $personaRep;
+    public $proformaRep;
 
-    public function __construct(PersonaRep $personaRep){
+    public function __construct(PersonaRep $personaRep,ProformaRep $proformaRep){
         $this->personaRep= $personaRep;
+        $this->proformaRep = $proformaRep;
     }
 
 
@@ -26,6 +29,46 @@ class HelperController extends Controller{
        $personal = $this->personaRep->getPersonalByDNI($data['dni']);
        return $personal->toJson();
 
+
+    }
+
+    public function hGetProformaById(){
+
+        $data = \Input::all();
+        $numero = $data['id'];
+
+
+        $proforma = $this->proformaRep->GetProformaByNumero($numero);
+
+        return \Response::json($proforma);
+
+
+    }
+
+    public function prueba(){
+
+        
+        
+        $personal = $this->personaRep->orderPersonal();
+
+        return \Response::json($personal);
+
+        /*
+
+        $proforma = $this->proformaRep->GetProformaByNumero($numero);
+
+        return \Response::json($proforma);*/
+
+    }
+
+    public function getNumberProforma()
+    {
+        $data = \Input::all();
+        $id = $data['idProforma'];
+
+        $proforma = $this->proformaRep->find($id);
+
+        return $proforma->numero;
 
     }
 

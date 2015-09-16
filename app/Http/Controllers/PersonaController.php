@@ -76,6 +76,39 @@ class PersonaController extends Controller{
 
     }
 
+    public function updatePersonal($id)
+    {
+
+        $profesiones = $this->profesioneRep->all();
+        return view('RH/personal/viewUpdatePersonal',compact('profesiones','id'));
+        
+    }
+
+    public function getPersonalByID()
+    {   
+        $data = \Input::all();
+
+        $personal = $this->personaRep->find($data['id']);
+
+        return \Response::json($personal);
+    }
+
+    public function editPersonal()
+    {
+        $data = \Input::all();
+        $id = $data['id'];
+        $bandera = $this->personaRep->editPersonal($data);
+
+        
+        if($bandera === 1){
+            return \Redirect::route('personal')->with(array('confirm' => 'Personal Actualizado'));
+        }
+        else{
+            $profesiones = $this->profesioneRep->all();
+            return  redirect()->back()->withInput()->withErrors($bandera);
+        }
+    }
+
 
 
 

@@ -21,6 +21,7 @@ class CreatePersonasTable extends Migration {
             $table->string('apellidoM');
             $table->string('dni');
             $table->string('celular');
+            $table->string('fotocheck');
             $table->boolean('estado');
             $table->decimal('costo_h',9,2)->nullable()->default(NULL);
 

@@ -12,10 +12,15 @@ use Symi\Entities\Profesione;
 class ProfesioneRep {
 
     public function all(){
-        $profesiones = Profesione::all();
+        $profesiones = Profesione::orderBy('descripcion', 'asc')->get();
         return $profesiones;
     }
 
+    public function find($id)
+    {
+        $profesion = Profesione::find($id);
+        return $profesion;
+    }
 
     public function getProfesionByCriterio($criterio){
         $criterio ='%'.$criterio.'%';
@@ -39,5 +44,21 @@ class ProfesioneRep {
 
 
     }
+    public function updateProfesion($data){
+
+        $profesion = Profesione::find($data['id']);
+        $profesion->descripcion = $data['descripcion'];
+        $profesion->observacion = $data['observacion'];
+
+        if($profesion->save()){
+            return 1;
+        }else{
+            return "No es posible guardar la profesion revise los datos de ingreso";
+        }
+
+
+    }
+
+    
 
 }

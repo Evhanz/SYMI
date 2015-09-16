@@ -47,6 +47,32 @@ class ProfesioneController extends Controller {
 
     }
 
+
+    public function updateProfesion()
+    {
+        $data = \Input::all();
+
+        $bandera = $this->profesioneRep->updateProfesion($data);
+
+        if($bandera == 1){
+            return \Redirect::route('viewProfesiones',['criterio' => "&"])->with(array('confirm' => 'Profesion Registrada'));
+        }else{
+            return \Redirect::route('viewProfesiones',['criterio' => "&"])->with(array('fail' => $bandera));
+
+        }
+
+    }
+
+    public function getProfesionById()
+    {
+        $data = \Input::all();
+
+        $profesion = $this->profesioneRep->find($data['id']);
+
+        return  \Response::json($profesion);
+
+    }
+
     public function index(){
 
         dd('hola');

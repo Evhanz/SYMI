@@ -13,7 +13,7 @@ class CreatePersonaTareosTable extends Migration {
 	public function up()
 	{
 		//
-        Schema::create('persona_tareos',function(Blueprint $table)
+        Schema::create('persona_tareo',function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('h_trabajadas');
@@ -45,7 +45,7 @@ class CreatePersonaTareosTable extends Migration {
 	public function down()
 	{
 		//
-        Schema::drop('persona_tareos');
+        Schema::drop('persona_tareo');
 	}
 
 }

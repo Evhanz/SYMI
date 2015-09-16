@@ -29,4 +29,9 @@ class Persona extends Model {
         return $this->belongsTo('Symi\Entities\Profesione','profesion_id','id');
     }
 
+    public function area(){
+        return $this->belongsToMany('Symi\Entities\Area')
+        ->withPivot('f_inicio','f_fin','estado','tipo');
+    }
+
 }

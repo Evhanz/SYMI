@@ -13,4 +13,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proforma extends Model{
 
+	protected $fillable = array('numero','descripcion','monto_MO','f_inicio',
+        'n_dias');
+
+	public function area(){
+        //$this->belongsTo('entitie', 'local_key', 'parent_key');
+        return $this->belongsTo('Symi\Entities\Area','area_id','id');
+    }
+
 }
