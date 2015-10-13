@@ -31,7 +31,7 @@
         <div class="row"><!--Mesaje de errores-->
             @if(isset($errors))
                 @if (count($errors) > 0)
-                    <div style="display:none" id="alert-danger" class="alert alert-danger alert-dismissible" role="alert">
+                    <div  id="alert-danger" class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4>Error!!</h4>
                         <ul>
@@ -92,6 +92,17 @@
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Monto de Maquinarias y Equipos</label>
+                                    <input class="form-control" type="number" name="    maquinaria_equipo" step="any" required="required">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Monto de Materiales</label>
+                                    <input class="form-control" type="number"  name="materiales" step="any" required="required">
+                                </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">

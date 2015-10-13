@@ -9,16 +9,19 @@
 namespace symi\Http\Controllers;
 use Symi\Repositories\PersonaRep;
 use Symi\Repositories\ProformaRep;
+use Symi\Repositories\TareoRep;
 
 
 class HelperController extends Controller{
 
     public $personaRep;
     public $proformaRep;
+    public $tareoRep;
 
-    public function __construct(PersonaRep $personaRep,ProformaRep $proformaRep){
+    public function __construct(PersonaRep $personaRep,ProformaRep $proformaRep,TareoRep $tareoRep){
         $this->personaRep= $personaRep;
         $this->proformaRep = $proformaRep;
+        $this->tareoRep = $tareoRep;
     }
 
 
@@ -69,6 +72,16 @@ class HelperController extends Controller{
         $proforma = $this->proformaRep->find($id);
 
         return $proforma->numero;
+
+    }
+
+
+    public function updateCostosPersonal()
+    {
+        
+        $this->tareoRep->updateCostosPersonal();
+        dd('Pro');
+
 
     }
 

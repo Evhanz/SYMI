@@ -17,6 +17,9 @@
     <!-- jQuery 2.0.2 -->
     <script src="{{ asset('js/jquery-2.0.2.min.js')}}"></script>
 
+    <!--Angular JS 1.2.19 -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -383,7 +386,10 @@
 </body>
 </html>
 
+
 <style>
+
+    /*todo esto pasar a un css externo*/
     #alert-success{
         position: absolute;
         right: 25px;
@@ -424,7 +430,161 @@
         margin-bottom: 5px;
     }
 
+    /*Pagination*/
+    
+    #pagination > ul{
 
+        display: inline-block;
+        padding-left: 0px;
+        margin: 20px 0px;
+        border-radius: 4px;
+        
+    }
+
+    #pagination >ul >li{
+        display: inline;
+
+    }
+
+    #pagination > ul > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    }
+    #pagination > ul > li > a, 
+    #pagination > ul > li > span {
+        cursor: pointer;
+        position: relative;
+        float: left;
+        padding: 6px 12px;
+        margin-left: -1px;
+        line-height: 1.42857;
+        color: #337AB7;
+        text-decoration: none;
+        background-color: #FFF;
+        border: 1px solid #DDD;
+    }
+
+    #pagination > ul > .disabled > a,
+    #pagination > ul > .disabled > a:focus, 
+    #pagination > ul > .disabled > a:hover, 
+    #pagination > ul > .disabled > span, 
+    #pagination > ul > .disabled > span:focus, 
+    #pagination > ul > .disabled > span:hover {
+        color: #777;
+        cursor: not-allowed;
+        background-color: #FFF;
+        border-color: #DDD;
+    }
+
+    #pagination > ul > .active > a,
+    #pagination > ul> .active > a:focus,
+    #pagination > ul > .active > a:hover,
+    #pagination > ul > .active > span,
+    #pagination > ul > .active > span:focus,
+    #pagination > ul > .active > span:hover {
+        z-index: 2;
+        color: #FFF;
+        cursor: default;
+        background-color: #337AB7;
+        border-color: #337AB7;
+    }
+
+
+
+
+    /*End - Pagination*/
+
+    /*para el boton cargando*/
+    .circle {
+        background-color: rgba(0,0,0,0);
+        border: 5px solid rgba(0,183,229,0.9);
+        opacity: .9;
+        border-right: 5px solid rgba(0,0,0,0);
+        border-left: 5px solid rgba(0,0,0,0);
+        border-radius: 50px;
+        box-shadow: 0 0 35px #2187e7;
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+        -moz-animation: spinPulse 1s infinite ease-in-out;
+        -webkit-animation: spinPulse 1s infinite linear;
+    }
+
+    .circle1 {
+        background-color: rgba(0,0,0,0);
+        border: 5px solid rgba(0,183,229,0.9);
+        opacity: .9;
+        border-left: 5px solid rgba(0,0,0,0);
+        border-right: 5px solid rgba(0,0,0,0);
+        border-radius: 50px;
+        box-shadow: 0 0 15px #2187e7;
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        position: relative;
+        top: -40px;
+        -moz-animation: spinoffPulse 1s infinite linear;
+        -webkit-animation: spinoffPulse 1s infinite linear;
+    }
+
+    @-moz-keyframes spinPulse {
+        0% {
+            -moz-transform: rotate(160deg);
+            opacity: 0;
+            box-shadow: 0 0 1px #2187e7;
+        }
+
+        50% {
+            -moz-transform: rotate(145deg);
+            opacity: 1;
+        }
+
+        100% {
+            -moz-transform: rotate(-320deg);
+            opacity: 0;
+        };
+    }
+
+    @-moz-keyframes spinoffPulse {
+        0% {
+            -moz-transform: rotate(0deg);
+        }
+
+        100% {
+            -moz-transform: rotate(360deg);
+        };
+    }
+
+    @-webkit-keyframes spinPulse {
+        0% {
+            -webkit-transform: rotate(160deg);
+            opacity: 0;
+            box-shadow: 0 0 1px #2187e7;
+        }
+
+        50% {
+            -webkit-transform: rotate(145deg);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: rotate(-320deg);
+            opacity: 0;
+        };
+    }
+
+    @-webkit-keyframes spinoffPulse {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        };
+    }
+
+    /*end cargando*/
 
         
 

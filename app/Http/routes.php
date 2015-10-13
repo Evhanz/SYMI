@@ -41,6 +41,9 @@ Route::post('personal/getById/',['as'=>'getPersonalByID','uses'=>'PersonaControl
 Route::post('personal/updatePersonal',['as'=>'editPersonal','uses'=>'PersonaController@editPersonal']);
 
 
+
+
+
 //-------- profesiones --->
 Route::get('personal/profesiones',['as'=>'modProfesion']);
 Route::get('personal/profesiones/{criterio}',['as'=>'viewProfesiones','uses'=>'ProfesioneController@getProfesiones']);
@@ -56,6 +59,12 @@ Route::get('proformas/new',['as'=>'viewNewProforma','uses'=>'ProformaController@
 Route::post('proformas/regProforma',['as'=>'regProforma','uses'=>'ProformaController@regProforma']);
 Route::get('proformas/ViewUpdateProforma/{id}',['as'=>'ViewUpdateProforma','uses'=>'ProformaController@ViewUpdateProforma']);
 Route::post('proformas/updateProforma',['as'=>'updateProforma','uses'=>'ProformaController@updateProforma']);
+Route::post('proformas/get/getProformasByAreaOrNumero',['as'=>'getProformasByAreaOrNumero','uses'=>'ProformaController@getProformasByAreaOrNumero']);
+/*----reporte de prforma*/
+Route::get('proformas/getReporteDetalleProformaById/{id}',
+			['as'=>'getReporteDetalleProformaById',
+			'uses'=>'ProformaController@getReporteDetalleProformaById']);
+
 
 
 
@@ -69,6 +78,7 @@ Route::post('tareos/regTareo',['as'=>'regTareo','uses'=>'TareoController@regTare
 Route::post('tareos/getDetallePersonal/ById',['as'=>'getDetallePersonal','uses'=>'TareoController@getDetallePersonal']);
 Route::post('tareos/getDetalleAvance',['as'=>'getDetalleAvance','uses'=>'TareoController@getDetalleAvance']);
 Route::post('tareos/updateTareo',['as'=>'updateTareo','uses'=>'TareoController@updateTareo']);
+Route::post('tareos/getTareosByAreaAndFecha',['as'=>'getTareosByAreaAndFecha','uses'=>'TareoController@getTareosByAreaAndFecha']);
 
 
 
@@ -95,7 +105,7 @@ Route::post('areas/getPersonalByAreaId/',['as'=>'getPersonalByAreaId','uses'=>'A
 Route::post('helper/personalByDNI',['as'=>'hGetPersonalByDNI','uses'=>'HelperController@getPersonalByDNI']);
 Route::post('helper/proformaByID',['as'=>'hGetProformaById','uses'=>'HelperController@hGetProformaById']);
 Route::post('helper/getNumberProforma',['as'=>'getNumberProforma','uses'=>'HelperController@getNumberProforma']);
-
+Route::get('helper/updateCostosPersonal',['as'=>'updateCostosPersonal','uses'=>'HelperController@updateCostosPersonal']);
 
 
 //-------solo para pruebas unitarias --->

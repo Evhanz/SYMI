@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proforma extends Model{
 
-	protected $fillable = array('numero','descripcion','monto_MO','f_inicio',
+	protected $fillable = array('numero','descripcion','monto_MO','maquinaria_equipo','materiales','f_inicio',
         'n_dias');
 
 	public function area(){

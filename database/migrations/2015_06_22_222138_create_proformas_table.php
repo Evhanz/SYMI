@@ -20,9 +20,15 @@ class CreateProformasTable extends Migration {
             $table->string('descripcion');
             $table->decimal('monto_MO');
 
+
             $table->date('f_inicio')->nullable();
             $table->date('f_fin')->nullable();
             $table->tinyInteger('n_dias');
+
+            /*se registro por cambio de requerimientos*/
+            $table->decimal('maquinaria_equipo')->nullable();
+            $table->decimal('materiales')->nullable();
+
 
             //relaciones
             $table->integer('area_id')->unsigned();

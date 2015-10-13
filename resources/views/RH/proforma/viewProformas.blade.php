@@ -29,8 +29,7 @@
 
 @section('content')
 
-    
-    <div class="content">
+    <div class="content" ng-app="app" ng-controller="MainController">
         <div class="row">
             <div class="col-lg-12">
                 <div class="box box-danger" >
@@ -41,17 +40,29 @@
                         </div><!-- /. tools -->
                         <i class="fa fa-cloud"></i>
 
-                        <h3 class="box-title">Lista de Todo el personal</h3>
+                        <h3 class="box-title">Lista de Todas las proformas</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body no-padding">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form class="form-inline">
+                                <form ng-submit="enviarData()" method="post" class="form-inline">
+                                    <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                                     <div class="form-group">
-                                       <label>Numero</label>
-                                        <input id="txtNumero" value="{{{ $numero or ''}}}" type="text"  style=" width: 427.9979991912842px;" class="form-control" >
+                                        <label>Área</label><br>
+                                        <select class="form-control" ng-model="area" >
+                                            <option value="0">Ninguno</option>
+                                            @foreach($areas as $area)
+                                                <option value="{{$area->id}}">{{$area->descripcion}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Numero</label>
+                                        <input ng-trim="true" ng-model="numero" class="form-control" type="text">
+                                    </div>
+                                    
                                     <div class="form-group" >
+                                    <label for="">Opciones</label><br>
                                         <button  class="btn btn-info" id="btnBuscar">
                                             <i class="fa fa-search"></i>
                                                 Buscar
@@ -59,49 +70,51 @@
                                         
                                     </div>
                                     <div class="form-group">
+                                        <label for=""></label><br>
                                         <a href="{{route('viewNewProforma')}}" class="btn btn-success" style="width: 100%" id="btnNuevo">
                                             <i class="add user icon"></i>
                                             Nuevo
                                         </a>
                                     </div>
-                                   
                                 </form>
                             </div>
                         </div>
 
                         <div class="row" style="padding: 15px;">
                             <div class="table-responsive">
-                                <table class="ui table" id="tableReq">
+                                <table class="table" id="tableReq">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Numero</th>
+                                            <th>Número</th>
                                             <th>Descripcion</th>
-                                            <th>Area</th>
-                                            <th colspan="2">Opciones</th>
+                                            <th>Área</th>
+                                            <th colspan="3">Opciones</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($proformas as $proforma)
-                                        <tr>
-                                            <td>{{ $proforma->id }}</td>
-                                            <td>{{ $proforma->numero }}</td>
-                                            <td>{{ $proforma->descripcion}}</td>
-                                            <td>{{ $proforma->area->descripcion}}</td>
+                                        <tr ng-repeat="proforma in proformas">
+                                            <td>@{{proforma.id}}</td>
+                                            <td>@{{proforma.numero}}</td>
+                                            <td>@{{proforma.descripcion}}</td>
+                                            <td>@{{proforma.area.descripcion}}</td>
                                             <td>
-                                                <a href="{{ URL::route('ViewUpdateProforma',array('id'=>$proforma->id))}}" class="btn btn-warning">
-                                                        Editar<i class="edit icon"></i>
+                                                <a ng-click="editProforma(proforma.id)" class="btn btn-warning">
+                                                    Editar<i class="edit icon"></i>
                                                 </a>    
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger">
-                                                        Eliminar<i class="remove icon"></i>
-                                                    </button>
+                                                    Eliminar<i class="remove icon"></i>
+                                                </button>
                                             </td>
-
+                                            <td>
+                                                <a ng-click="ver(proforma.id)" class="btn btn-info">
+                                                    ver<i class="remove icon"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                    @endforeach
                                     </tbody>
                                 </table>
                             </div><!--/.table-responsive -->
@@ -118,8 +131,81 @@
         </div>
     </div><!-- /.content-->
 
-
+    
     <script>
+
+        
+
+        var app = angular.module("app",[]);
+        app.controller("MainController", function($scope,$http,$window) {
+            /*declaracion de inicio*/
+            $scope.area = 0; 
+            var token = $('input[name="_token"]').attr('value');
+            $scope.proformas = [];
+            $scope.numero ="";
+
+
+
+
+            /*funciones de uso del mod*/
+            $scope.enviarData = function () {
+
+
+                if ($scope.numero == "") {
+                    $scope.numero = "-";
+                };
+
+              //  
+                $http.post('{{ URL::route('getProformasByAreaOrNumero') }}',
+                        {_token : token,
+                        numero:$scope.numero,
+                        area:$scope.area })
+                    .success(function(data){
+
+                            if (data.length >= 1) {
+                                $scope.proformas = data;
+
+                            } else{
+                                //console.log(data);
+
+
+                                $scope.proformas =[];
+                                var proforma = {
+                                    id:data.id,
+                                    descripcion:data.descripcion,
+                                    area:data.area.descripcion
+                                }
+                                
+                                $scope.proformas.push(proforma);
+                            };
+
+                            //$scope.proformas = data;
+                            console.log(data);
+
+                        })
+                    .error(function(data) {
+                            console.log(data);
+                        });
+            }
+
+            $scope.editProforma = function  (idProforma) {
+                
+                //alert('{{ URL::route('modProformas') }}/ViewUpdateProforma/'+idProforma);
+                $window.location.href = '{{ URL::route('modProformas') }}/ViewUpdateProforma/'+idProforma;
+            }
+
+
+            $scope.ver = function (idProforma) {
+                
+                $window.location.href = "{{ URL::route('modProformas') }}/getReporteDetalleProformaById/"+idProforma;
+            }
+
+
+
+
+
+        });
+
 
         $("#alert-success").delay(1000).fadeIn('slow');
         $("#alert-success").delay(3000).fadeOut('slow');
@@ -131,6 +217,19 @@
         $('#btnNuevo').click(function(){
             $('#modalNew').modal('show');
         });
+
+
+        /*comparacion de fechas*/
+
+
+        /*
+        var fech1 = document.getElementById(fechaInicial).value;
+        var fech2 = document.getElementById(fechaFinal).value;
+
+        */
+
+
+        /*------------*/
 
 
     </script>

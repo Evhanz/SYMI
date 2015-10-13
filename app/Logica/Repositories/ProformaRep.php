@@ -25,7 +25,7 @@ class ProformaRep {
     public function GetProformaByNumero($numero){
 
         try{
-            $proforma = Proforma::where('numero','like',$numero)->firstOrFail();
+            $proforma = Proforma::where('numero','like',$numero)->orWhere('numero','like','%'.$numero.'%')->get();
         }catch (\Exception $e){
 
             $proforma = 0;
@@ -34,6 +34,16 @@ class ProformaRep {
         return $proforma;
 
     }
+
+    public function getProformaByArea($area)
+    {
+        $proformas = Proforma::select('proformas.id','proformas.numero','proformas.descripcion','areas.descripcion as area')
+                             ->join('areas', 'areas.id', '=', 'proformas.area_id')
+                             ->where('area_id','like',$area)
+                             ->get();
+        return $proformas;
+    }
+
 
     public function regProforma($data){
 
@@ -44,9 +54,11 @@ class ProformaRep {
 
             'numero' => 'required|min:4',
             'descripcion' => 'required|min:4',
-            'monto_MO' => 'required|min:4',
+            'monto_MO' => 'required',
             'f_inicio' => 'required',
             'n_dias' => 'required',
+            'maquinaria_equipo' => 'required',
+            'materiales' =>'required'
 
         ];
 
@@ -85,6 +97,8 @@ class ProformaRep {
             'monto_MO' => 'required|min:4',
             'f_inicio' => 'required|date',
             'n_dias' => 'required',
+            'maquinaria_equipo' => 'required',
+            'materiales' =>'required'
 
         ];
 
@@ -99,6 +113,8 @@ class ProformaRep {
             $proforma->numero = $data['numero'];
             $proforma->descripcion = $data['descripcion'];
             $proforma->monto_MO = $data['monto_MO'];
+            $proforma->maquinaria_equipo = $data['maquinaria_equipo'];
+            $proforma->materiales = $data['materiales'];
             $proforma->f_inicio = $data['f_inicio'];
             $proforma->n_dias = $data['n_dias'];
             $proforma->area_id = $area;
