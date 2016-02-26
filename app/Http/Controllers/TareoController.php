@@ -157,5 +157,17 @@ class TareoController extends Controller{
 
     }
 
+    public function getInitTareoAll()
+    {
+        # code...
+
+        $tareos = $this->tareoRep->getInitTareoAll();
+
+       
+
+        return \Response::json($tareos);
+
+    }
+
 
 }

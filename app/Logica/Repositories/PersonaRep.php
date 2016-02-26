@@ -8,6 +8,8 @@
 
 namespace Symi\Repositories;
 use Symi\Entities\Persona;
+use Symi\Entities\PersonalTareo;
+use Illuminate\Support\Facades\DB;
 
 class PersonaRep  {
 
@@ -161,5 +163,26 @@ class PersonaRep  {
         return $personas;
 
     }
+
+
+    /*servicios*/
+
+    public function GetHorasByFechas($id,$fecha_ini,$fecha_fin)
+    {
+
+        $horas = DB::table('persona_tareo')
+            ->join('tareos', 'persona_tareo.tareo_id', '=', 'tareos.id')
+            ->join('proformas', 'persona_tareo.proforma_id', '=', 'proformas.id')
+            ->select('persona_tareo.id','persona_tareo.h_trabajadas', 'tareos.fecha','tareos.id as tareo_id','proformas.numero')
+            ->where('persona_tareo.persona_id','like',$id)
+            ->where('tareos.fecha','>=',$fecha_ini)
+            ->where('tareos.fecha','<=',$fecha_fin)
+            ->orderBy('tareos.fecha','asc')
+            ->get();
+
+//->groupBy('persona_tareo.h_trabajadas', 'tareos.fecha','tareos.id')
+        return $horas;
+    }
+
 
 }

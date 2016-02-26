@@ -20,6 +20,9 @@
     <!--Angular JS 1.2.19 -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
 
+    <!--Main JS del sistema -->
+    <script src="{{ asset('js/main.js')}}"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -311,7 +314,7 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-bar-chart-o"></i>
+                        <i class="fa fa-user"></i>
                         <span>Personal</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -322,7 +325,8 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('personal')}}" class="item sub"><i class="fa fa-angle-double-right"></i>  Módulo Personal</a></li>
                         <li><a href="{{route('viewProfesiones','&')}}" class="item sub"><i class="fa fa-angle-double-right"></i>Módulo Profesion</a></li>
-                        <li><a href="{{route('viewAreas','&')}}" class="item sub"><i class="fa fa-angle-double-right"></i>M Módulo Area</a></li>
+                        <li><a href="{{route('viewAreas','&')}}" class="item sub"><i class="fa fa-angle-double-right"></i>Módulo Area</a></li>
+                        <li><a href="{{route('getAllContratos')}}" class="item sub"><i class="fa fa-angle-double-right"></i>Módulo Contratos</a></li>
                     </ul>
                 </li><!--Personal-->
 
@@ -340,6 +344,23 @@
                         <li><a href="{{route('viewTareo')}}" class="item sub"><i class="fa fa-angle-double-right"></i> Modulo Tareo</a></li>
                     </ul>
                 </li><!--Proformas-->
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i>
+                        <span>Reportes</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('getReporteByPersonal')}}" class="item sub"><i class="fa fa-angle-double-right"></i> Horas </a></li>
+                        <li><a href="{{route('viewGetReportByProforms')}}" class="item sub"><i class="fa fa-angle-double-right"></i> Resumen Proformas</a></li>
+                        <li><a href="{{route('viewGetProformaNoClosed')}}" class="item sub"><i class="fa fa-angle-double-right"></i> Proformas No Cerradas</a></li>
+
+                    </ul>
+
+
+                </li><!--Proformas-->
+
 
             </ul>
         </section>

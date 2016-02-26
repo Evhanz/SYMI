@@ -12,6 +12,8 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'symi\Console\Commands\Inspire',
+		'symi\Console\Commands\logDemon',
+		'symi\Console\Commands\alertContract',
 	];
 
 	/**
@@ -24,6 +26,9 @@ class Kernel extends ConsoleKernel {
 	{
 		$schedule->command('inspire')
 				 ->hourly();
+		//$schedule->command('log:demo')->everyFiveMinutes();
+		$schedule->command('alert:contract')->dailyAt('09:00');
+
 	}
 
 }

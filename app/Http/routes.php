@@ -60,14 +60,17 @@ Route::post('proformas/regProforma',['as'=>'regProforma','uses'=>'ProformaContro
 Route::get('proformas/ViewUpdateProforma/{id}',['as'=>'ViewUpdateProforma','uses'=>'ProformaController@ViewUpdateProforma']);
 Route::post('proformas/updateProforma',['as'=>'updateProforma','uses'=>'ProformaController@updateProforma']);
 Route::post('proformas/get/getProformasByAreaOrNumero',['as'=>'getProformasByAreaOrNumero','uses'=>'ProformaController@getProformasByAreaOrNumero']);
+Route::get('proformas/getEstadoOfProforma/{id}',['as'=>'getEstadoOfProforma','uses'=>'ProformaController@getEstadoOfProforma']);
+Route::post('proformas/regEstadoNew',['as'=>'regEstadoNew','uses'=>'ProformaController@regEstadoNew']);
+Route::get('proformas/getEstadoByID/{id}',['as'=>'getEstadoByID','uses'=>'ProformaController@getEstadoByID']);
+Route::post('proformas/updateEstado',['as'=>'updateEstado','uses'=>'ProformaController@updateEstado']);
+
+
 /*----reporte de prforma*/
 Route::get('proformas/getReporteDetalleProformaById/{id}',
 			['as'=>'getReporteDetalleProformaById',
 			'uses'=>'ProformaController@getReporteDetalleProformaById']);
-
-
-
-
+Route::post('proformas/getInitAllDataProformas',['as'=>'getInitAlldata','uses'=>'ProformaController@getInitAlldata']);
 
 //-------- Tareos  -------->
 Route::get('tareos',['as'=>'modTareos']);
@@ -79,6 +82,7 @@ Route::post('tareos/getDetallePersonal/ById',['as'=>'getDetallePersonal','uses'=
 Route::post('tareos/getDetalleAvance',['as'=>'getDetalleAvance','uses'=>'TareoController@getDetalleAvance']);
 Route::post('tareos/updateTareo',['as'=>'updateTareo','uses'=>'TareoController@updateTareo']);
 Route::post('tareos/getTareosByAreaAndFecha',['as'=>'getTareosByAreaAndFecha','uses'=>'TareoController@getTareosByAreaAndFecha']);
+Route::post('tareos/getInitTareoAll',['as'=>'getInitTareoAll','uses'=>'TareoController@getInitTareoAll']);
 
 
 
@@ -108,5 +112,48 @@ Route::post('helper/getNumberProforma',['as'=>'getNumberProforma','uses'=>'Helpe
 Route::get('helper/updateCostosPersonal',['as'=>'updateCostosPersonal','uses'=>'HelperController@updateCostosPersonal']);
 
 
+
+//-------Reportes
+Route::get('reportes',['as'=>'modReportes']);
+Route::get('reportes/personal/viewAllPersonal',['as'=>'getViewPersonalByHoras',
+	'uses'=>'ReportesController@getViewPersonalByHoras']);
+/*Controller Reportes*/
+Route::get('reportes/getReporteByPersonal',['as'=>'getReporteByPersonal','uses'=>'ReportesController@getViewByHorasPersonalForDates']);
+
+/*Proformas no cerradas*/
+Route::get('reportes/getProformaNoClosed',['as'=>'getProformaNoClosed','uses'=>'ProformaController@getProformaNoClosed']);
+Route::get('reportes/viewGetProformaNoClosed',['as'=>'viewGetProformaNoClosed','uses'=>'ProformaController@viewGetProformaNoClosed']);
+Route::post('reportes/getReportAdminByProforms',['as'=>'getReportAdminByProforms','uses'=>'ProformaController@getReportAdminByProforms']);
+Route::get('reportes/viewGetReportByProforms',['as'=>'viewGetReportByProforms','uses'=>'ProformaController@viewGetReportByProforms']);
+	/*----es apra mandar a excel el reporte de ^ */
+Route::get('reportes/excelReportProformAbstract/{f_i}/{f_f}/{area}',['as'=>'excelReportProformAbstract','uses'=>'ProformaController@excelReportProformAbstract']);
+
+
+/*Servicios*/
+
+/*--------------Personal------------------------*/
+
+Route::post('service/getPersonalByDNI',['as'=>'ServicegetPersonalByDNI',
+	'uses'=>'HelperController@getPersonalByDNI']);
+
+/*Horas por personal de fecha a fecha*/
+
+Route::post('service/getHorasByFechas',['as'=>'ServiceGetHorasByFechas','uses'=>'PersonaController@ServiceGetHorasByFechas']);
+
+
+
+/*-------------Contrato ----------------------*/
+Route::get('contratos',['as'=>'modContratos']);
+Route::get('contratos/getAllContratos',['as'=>'getAllContratos','uses'=>'ContratoController@index']);
+Route::post('contratos/regContrato',['as'=>'regContrato','uses'=>'ContratoController@regContrato']);
+Route::post('contratos/editContrato',['as'=>'editContrato','uses'=>'ContratoController@editContrato']);
+Route::post('contratos/renovContrato',['as'=>'renovContrato','uses'=>'ContratoController@renovContrato']);
+Route::get('contratos/getById/{id}',['as'=>'getContratoById','uses'=>'ContratoController@getById']);
+
+
+
+
 //-------solo para pruebas unitarias --->
 Route::get('helper/getPersonalOrderAll',['as'=>'prueba','uses'=>'HelperController@prueba']);
+Route::get('helper/sendMail',['as'=>'sendMail','uses'=>'HelperController@sendMail']);
+Route::get('helper/fecha',['as'=>'fecha','uses'=>'HelperController@fecha']);

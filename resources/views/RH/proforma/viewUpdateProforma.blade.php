@@ -12,7 +12,7 @@
         <div style="display:none" id="alert-danger" class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4>Error!!</h4>
-            <p><i class="fa fa-info-circle"></i>  <strong>{{ Session::get('confirm') }}</strong></p>
+            <p><i class="fa fa-info-circle"></i>  <strong>{{ Session::get('fail') }}</strong></p>
         </div>
     @endif
 
@@ -31,7 +31,7 @@
         <div class="row"><!--Mesaje de errores-->
             @if(isset($errors))
                 @if (count($errors) > 0)
-                    <div style="display:none" id="alert-danger" class="alert alert-danger alert-dismissible" role="alert">
+                    <div id="alert-danger" class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4>Error!!</h4>
                         <ul>
@@ -94,6 +94,25 @@
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Monto de Maquinarias y Equipos</label>
+                                    <input class="form-control" value="{{$proforma->maquinaria_equipo}}" type="number" name="maquinaria_equipo" step="any" required="required">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Monto de Materiales</label>
+                                    <input class="form-control" value="{{$proforma->materiales}}" type="number"  name="materiales" step="any" required="required">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Tipo de Moneda</label>
+                                    <select class="form-control" name="tipo_moneda" id="tipo_moneda" required="required">
+                                        <option value="">-----</option>
+                                        <option value="dolares">$.- Dolares </option>
+                                        <option value="soles">S/ .- Soles</option>
+                                    </select>
+                                </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -209,6 +228,9 @@
 
 
             $("#sArea").val("{{$proforma->area_id}}");
+            $("#tipo_moneda").val("{{$proforma->tipo_moneda}}");
+
+
 
 
             $( "#sArea" ).change(function() {
@@ -219,6 +241,8 @@
                 }else
                     $('#btnGuardar').attr("disabled", true);
             });
+
+
 
 
 

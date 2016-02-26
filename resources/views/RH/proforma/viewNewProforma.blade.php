@@ -96,11 +96,19 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label>Monto de Maquinarias y Equipos</label>
-                                    <input class="form-control" type="number" name="    maquinaria_equipo" step="any" required="required">
+                                    <input class="form-control" type="number" name="maquinaria_equipo" step="any" required="required">
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Monto de Materiales</label>
                                     <input class="form-control" type="number"  name="materiales" step="any" required="required">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Tipo de Moneda</label>
+                                    <select class="form-control" name="tipo_moneda" id="tipo_moneda" required="required">
+                                        <option value="">-----</option>
+                                        <option value="dolares">$.- Dolares </option>
+                                        <option value="soles">S/ .- Soles</option>
+                                    </select>
                                 </div>
 
                             </div>

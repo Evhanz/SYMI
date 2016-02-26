@@ -90,9 +90,14 @@
                                             <td>{{ $persona->dni }}</td>
                                             <td>{{ $persona->fotocheck }}</td>
                                             <td>
-                                            @foreach($persona->area as $area)
-                                                {{$area->descripcion}},
-                                            @endforeach
+                                                @for ($i = 0; $i < count($persona->area); $i++)
+                                                    @if(count($persona->area) == 1)
+                                                        {{$persona->area[0]->descripcion}}
+                                                    @elseif($i = count($persona->area)-1)
+                                                        {{$persona->area[$i]->descripcion}}
+                                                    @endif
+                                                @endfor
+
                                             </td>
                                             <td>
                                                 <a href="{{ URL::route('updatePersonal',array('id'=>$persona->id))}}" class="btn btn-warning">

@@ -156,7 +156,7 @@
     <div class="modal fade" id='modalEdit' >
       <div class="modal-dialog">
         <div class="modal-content">
-        <form class="ui form" action="{{ URL::route('editArea') }}" method="post">
+        <form class="ui form" action="{{ URL::route('updateProfesion') }}" method="post">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">Formulario de Actualización</h4>

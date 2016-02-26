@@ -70,11 +70,17 @@ class TareoRep {
 
     public function getTareosByAreaAndFecha($area,$fechaInicio,$fechaFin)
     {
+        /*se copmento par usar otra forma de utilizar los get Model
         $tareos = Tareo::select('tareos.id','tareos.fecha','areas.descripcion as area')
                         ->join('areas', 'areas.id', '=', 'tareos.area_id')
                         ->where('area_id','like',$area)
                         ->where('fecha','>=',$fechaInicio)
                         ->where('fecha','<=',$fechaFin)
+                        ->get();*/
+
+        $tareos = Tareo::where('fecha','>=',$fechaInicio)
+                        ->where('fecha','<=',$fechaFin)->with('area')
+                        ->orderBy('fecha','desc')
                         ->get();
         return $tareos;
         
@@ -82,10 +88,16 @@ class TareoRep {
 
     public function getTareoByArea($area)
     {
-
+        /*
         $tareos = Tareo::select('tareos.id','tareos.fecha','areas.descripcion as area')
                         ->join('areas', 'areas.id', '=', 'tareos.area_id')
-                        ->where('area_id','like',$area)->get();
+                        ->where('area_id','like',$area)->get();*/
+
+         $tareos = Tareo::where('area_id','like',$area)
+                        ->with('area')
+                        ->orderBy('fecha','desc')
+                        ->get();            
+
         return $tareos;
     }
 
@@ -111,6 +123,13 @@ class TareoRep {
 
         
 
+    }
+
+    public function getInitTareoAll()
+    {
+        $proformas = Tareo::orderBy('id','desc')->take(20)->with('area')->get();
+
+        return $proformas;
     }
 
 

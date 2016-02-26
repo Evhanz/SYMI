@@ -110,6 +110,24 @@ class PersonaController extends Controller{
     }
 
 
+    /*Servicios*/
+
+    public function ServiceGetHorasByFechas()
+    {
+        $data = \Input::all();
+        $id = $data['id'];
+
+        $personal = $this->personaRep->find($id);
+
+        $horas = $this->personaRep->GetHorasByFechas($id,$data['fecha_ini'],$data['fecha_fin']);
+
+        return \Response::json($horas);
+
+
+        
+    }
+
+
 
 
 }

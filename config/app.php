@@ -39,8 +39,8 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
-
+	//'timezone' => 'UTC',
+	'timezone'=>'America/Lima',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Locale Configuration
@@ -145,6 +145,9 @@ return [
 		'symi\Providers\EventServiceProvider',
 		'symi\Providers\RouteServiceProvider',
 
+		/*agregado por @evhanz*/
+		'Maatwebsite\Excel\ExcelServiceProvider',
+
 	],
 
 	/*
@@ -192,6 +195,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
 
 	],
 
