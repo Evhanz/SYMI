@@ -42,7 +42,7 @@
 
                         <h3 class="box-title">Lista de Todo el personal</h3>
                     </div><!-- /.box-header -->
-                    <div class="box-body no-padding">
+                    <div class="box-body ">
                         <div class="row">
                             <div class="col-lg-12">
                                 <form class="form-inline">
@@ -76,6 +76,7 @@
                                             <th>Profesion</th>
                                             <th>DNI</th>
                                             <th>Fotocheck</th>
+                                            <th>Estado</th>
                                             <th>Area's</th>
                                             <th colspan="2">Opciones</th>
 
@@ -89,6 +90,14 @@
                                             <td>{{ $persona->profesion->descripcion }}</td>
                                             <td>{{ $persona->dni }}</td>
                                             <td>{{ $persona->fotocheck }}</td>
+                                            <td>
+                                                @if($persona->estado)
+                                                    <button class="btn btn-success">
+                                                        <i class="fa fa-"></i>
+                                                    </button>
+                                                @else
+                                                @endif
+                                            </td>
                                             <td>
                                                 @for ($i = 0; $i < count($persona->area); $i++)
                                                     @if(count($persona->area) == 1)

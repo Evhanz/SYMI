@@ -27,7 +27,7 @@
 
                         <h3 class="box-title">Reporte de proformas </h3>
                     </div><!-- /.box-header -->
-                    <div class="box-body no-padding">
+                    <div class="box-body ">
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -63,68 +63,70 @@
 
                         <div class="row">
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12 ">
+                                <div class="table-responsive" style="overflow: auto">
+                                    <table id="tableReport" class="table table-bordered ">
 
-                                <table id="tableReport" class="table table-bordered table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th  colspan="2">Número</th>
+                                            <th >Mes</th>
+                                            <th  >Resultado</th>
+                                        </tr>
+                                        </thead>
 
-                                    <thead>
-                                    <tr>
-                                        <th  colspan="2">Número</th>
-                                        <th >Mes</th>
-                                        <th  >Resultado</th>
-                                    </tr>
-                                    </thead>
+                                        <tbody>
+                                        <tr ng-repeat="proforma in proformas">
+                                            <td>@{{proforma.numero}}</td>
+                                            <td style=" padding-top: 45px;">
+                                                <table>
+                                                    <tr>
+                                                        &nbsp;
+                                                    </tr>
+                                                    <tr>
+                                                        <td>%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>H/H</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td>
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <td ng-repeat="dias in cabecera_dias" class="tbl_detail">@{{ dias }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td  ng-repeat="avance in proforma.avance_tareo">
 
-                                    <tbody>
-                                    <tr ng-repeat="proforma in proformas">
-                                        <td>@{{proforma.numero}}</td>
-                                        <td style=" padding-top: 45px;">
-                                            <table>
-                                                <tr>
-                                                    &nbsp;
-                                                </tr>
-                                                <tr>
-                                                    <td>%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>H/H</td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table class="table table-bordered">
-                                                <tr>
-                                                    <td ng-repeat="dias in cabecera_dias" class="tbl_detail">@{{ dias }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td  ng-repeat="avance in proforma.avance_tareo">
+                                                            <span ng-show="avance.avance_real > 0">@{{ avance.avance_real }}%</span>
+                                                            <span ng-hide="avance.avance_real > 0">-</span>
 
-                                                        <span ng-show="avance.avance_real > 0">@{{ avance.avance_real }}%</span>
-                                                        <span ng-hide="avance.avance_real > 0">-</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td  ng-repeat="avance in proforma.avance_tareo">
+                                                            @{{ avance.ht }}
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td style=" padding-top: 65px;">
 
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td  ng-repeat="avance in proforma.avance_tareo">
-                                                        @{{ avance.ht }}
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td style=" padding-top: 65px;">
+                                                <span ng-show="proforma.mayor == 100">Terminada 100%</span>
+                                                <span ng-hide="proforma.mayor == 100">Total: @{{ proforma.mayor }}%</span>
+                                                <br>
+                                                @{{ proforma.suma }}
+                                            </td>
+                                        </tr>
 
-                                            <span ng-show="proforma.mayor == 100">Terminada 100%</span>
-                                            <span ng-hide="proforma.mayor == 100">Total: @{{ proforma.mayor }}%</span>
-                                            <br>
-                                            @{{ proforma.suma }}
-                                        </td>
-                                    </tr>
-
-                                    </tbody>
+                                        </tbody>
 
 
-                                </table>
+                                    </table>
+                                </div>
+
 
 
                             </div>
@@ -190,8 +192,8 @@
                 var dias= Math.floor(Dif/(1000*24*60*60));
 
                 $scope.cant_dias = dias;
-
-                $scope.cabecera_dias = cabeceraDayTable(dias);
+                var items;
+                //$scope.cabecera_dias = cabeceraDayTable(dias);
 
 
                 $http.post('{{ URL::route('getReportAdminByProforms') }}',
@@ -203,20 +205,49 @@
 
                             $scope.proformas = data;
 
+                            var bandera = 0;
+
                             angular.forEach($scope.proformas,function(item){
+
+                                if(bandera==0){
+                                   items = cab(item);
+
+                                    $scope.cabecera_dias = items;
+                                }
 
                                 item.suma = suma_ht(item.avance_tareo);
                                 item.mayor = mayor(item.avance_tareo);
+                                bandera++;
 
                             });
 
-                            console.log( $scope.proformas);
+                            //console.log( $scope.proformas);
+
 
                         }).error(function (data) {
                     console.log(data);
                 });
 
             };
+
+
+            function cab(item){
+
+                var d = [];
+
+
+                item.avance_tareo.forEach(function(i){
+
+                    var dia = i.fecha.split("-");
+
+                    d.push(dia[2]+"/"+dia[1]);
+
+                });
+
+                return d;
+
+            }
+
 
             function cabeceraDayTable (dias){
 
