@@ -161,7 +161,7 @@ class PersonaRep  {
             $persona->estado = 1;
         }
 
-        return $persona->id;
+        $persona->save();
 
     }
 
