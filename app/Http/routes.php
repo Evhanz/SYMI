@@ -39,6 +39,7 @@ Route::post('personal/regPersonal',['as'=>'regPersonal','uses'=>'PersonaControll
 Route::get('personal/UpdateById/{id}',['as'=>'updatePersonal','uses'=>'PersonaController@updatePersonal']);
 Route::post('personal/getById/',['as'=>'getPersonalByID','uses'=>'PersonaController@getPersonalByID']); 
 Route::post('personal/updatePersonal',['as'=>'editPersonal','uses'=>'PersonaController@editPersonal']);
+Route::get('personal/changeState/{id}',['as'=>'changeState','uses'=>'PersonaController@changeState']);
 
 
 

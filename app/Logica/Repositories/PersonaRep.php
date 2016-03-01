@@ -152,6 +152,17 @@ class PersonaRep  {
         }
     }
 
+    public function changestate($id){
+        $persona = Persona::find($id);
+
+        if($persona->estado){
+            $persona->estado = false;
+        }else{
+            $persona->estado = true;
+        }
+
+    }
+
 
 
     /*funcion para pruebas de ordenamiento*/

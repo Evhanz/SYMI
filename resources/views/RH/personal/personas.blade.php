@@ -92,10 +92,13 @@
                                             <td>{{ $persona->fotocheck }}</td>
                                             <td>
                                                 @if($persona->estado)
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-"></i>
+                                                    <button id="btnEstado{{$persona->id}}" onclick="changeStatePerson('{{$persona->id}}')" data-estado = "true"  class="btn btn-success">
+                                                        <i class="fa fa-check-square-o"></i>
                                                     </button>
                                                 @else
+                                                    <button id="btnEstado{{$persona->id}}" onclick="changeStatePerson('{{$persona->id}}')"  data-estado = "false" class="btn btn-danger">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
                                                 @endif
                                             </td>
                                             <td>
@@ -148,6 +151,48 @@
             document.getElementById(id).value = obj;
         }
 
+        function changeStatePerson(id){
+
+            $.get( "{{ URL::route('personalMod') }}"+"/changeState/"+id, function( data ) {
+
+                var  estado = $("#btnEstado"+id).attr("data-estado");
+                cambiar_estado(estado,id);
+
+                alert('Se cambio el estado Correctamente');
+                console.log(data);
+            });
+
+        }
+
+
+        function cambiar_estado(estado,id){
+
+
+
+            switch (estado){
+
+                case "true" :
+                    $("#btnEstado"+id).attr("data-estado","false");
+                    $("#btnEstado"+id).attr('class', 'btn btn-danger');
+                    $("#btnEstado"+id).children("i").attr("class","fa fa-times");
+
+                    break;
+                case "false" :
+                    $("#btnEstado"+id).attr("data-estado","true");
+                    $("#btnEstado"+id).attr('class', 'btn btn-success');
+                    $("#btnEstado"+id).children("i").attr("class","fa fa-check-square-o");
+
+                    break;
+            }
+
+
+
+
+        }
+
+
+
+
 
 
         //evento de los botones
@@ -165,7 +210,6 @@
                 e.preventDefault();
                 location.href='{{ URL::route('viewNewPersonal') }}';
             });
-
 
             $("#btnBuscar").click(function(e){
 
@@ -194,16 +238,12 @@
 
             });
 
-
         });
 
 
 
 
     </script>
-
-
-
 
 
 
