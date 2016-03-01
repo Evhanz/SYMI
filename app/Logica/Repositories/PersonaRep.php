@@ -155,11 +155,13 @@ class PersonaRep  {
     public function changestate($id){
         $persona = Persona::find($id);
 
-        if($persona->estado){
-            $persona->estado = false;
+        if($persona->estado == 1){
+            $persona->estado = 0;
         }else{
-            $persona->estado = true;
+            $persona->estado = 1;
         }
+
+        return $persona->id;
 
     }
 

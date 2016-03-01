@@ -111,15 +111,8 @@ class PersonaController extends Controller{
 
     public function changeState($id)
     {
-        $bandera = 0;
-        try{
+        $bandera = $this->personaRep->changestate($id);
 
-            $this->personaRep->changestate($id);
-
-        }catch(\Exception $e){
-
-            $bandera = 1;
-        }
 
         return \Response::json($bandera);
 
