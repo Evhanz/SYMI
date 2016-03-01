@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a13c975-c3f7-45ab-8324-fe9432f7ae2f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonaController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonaController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Logica/Repositories/PersonaRep.php" afterPath="$PROJECT_DIR$/app/Logica/Repositories/PersonaRep.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php" afterPath="$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php" />
     </list>
     <ignored path="SYMI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,15 +28,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="personas.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="personas.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6224138">
+            <state vertical-scroll-proportion="-13.884615">
               <caret line="181" column="69" selection-start-line="181" selection-start-column="69" selection-end-line="181" selection-end-column="69" />
               <folding>
                 <element signature="e#9107#10180#0#HTML" expanded="false" />
                 <element signature="e#10208#11895#0#HTML" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0880829">
+              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,7 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2015_06_22_222138_create_proformas_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_06_15_224526_create_areas_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_06_22_223602_create_persona_tareos_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProfesioneController.php" />
@@ -153,6 +159,7 @@
         <option value="$PROJECT_DIR$/app/Logica/Repositories/PersonaRep.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonaController.php" />
         <option value="$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -737,13 +744,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HelperController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24796085">
-          <caret line="118" column="9" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/emails/mailContratosVencidos.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17781404">
@@ -1104,12 +1104,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6224138">
+        <state vertical-scroll-proportion="-13.884615">
           <caret line="181" column="69" selection-start-line="181" selection-start-column="69" selection-end-line="181" selection-end-column="69" />
           <folding>
             <element signature="e#9107#10180#0#HTML" expanded="false" />
             <element signature="e#10208#11895#0#HTML" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0880829">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
