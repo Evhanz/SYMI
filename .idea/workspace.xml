@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3a13c975-c3f7-45ab-8324-fe9432f7ae2f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/RH/Reportes/viewReportAdminByProforms.blade.php" afterPath="$PROJECT_DIR$/resources/views/RH/Reportes/viewReportAdminByProforms.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php" afterPath="$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php" />
     </list>
     <ignored path="SYMI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +31,7 @@
       <file leaf-file-name="personas.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.653846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
               <folding />
             </state>
@@ -43,7 +41,7 @@
       <file leaf-file-name="viewReporteProforma.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/RH/Reportes/viewReporteProforma.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.538462">
+            <state vertical-scroll-proportion="0.0">
               <caret line="63" column="70" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
               <folding />
             </state>
@@ -53,11 +51,14 @@
       <file leaf-file-name="viewReportAdminByProforms.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/RH/Reportes/viewReportAdminByProforms.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70689654">
-              <caret line="215" column="33" selection-start-line="215" selection-start-column="33" selection-end-line="215" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.5017241">
+              <caret line="398" column="48" selection-start-line="398" selection-start-column="48" selection-end-line="398" selection-end-column="48" />
               <folding>
-                <element signature="e#3208#3230#0#HTML" expanded="true" />
-                <element signature="e#3958#3985#0#HTML" expanded="true" />
+                <element signature="e#3087#7287#0#HTML" expanded="false" />
+                <element signature="e#8232#8254#0#HTML" expanded="true" />
+                <element signature="e#8175#9082#0#HTML" expanded="false" />
+                <element signature="e#14126#14221#0#HTML" expanded="false" />
+                <element signature="e#16481#16779#0#HTML" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -173,6 +174,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -571,7 +573,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -671,7 +672,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23206443" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -718,8 +719,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3208#3230#0#HTML" expanded="true" />
-            <element signature="e#3958#3985#0#HTML" expanded="true" />
+            <element signature="e#3087#7287#0#HTML" expanded="false" />
+            <element signature="e#8232#8254#0#HTML" expanded="true" />
+            <element signature="e#8175#9082#0#HTML" expanded="false" />
+            <element signature="e#14126#14221#0#HTML" expanded="false" />
+            <element signature="e#16481#16779#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1023,7 +1027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8241379">
           <caret line="343" column="1" selection-start-line="343" selection-start-column="1" selection-end-line="343" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,7 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.3224138">
           <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,7 +1041,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.348276">
           <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,7 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5049505">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1055,13 +1055,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4586207">
           <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/RH/personal/personas.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.653846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
           <folding />
         </state>
@@ -1069,7 +1068,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/RH/Reportes/viewReporteProforma.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.538462">
+        <state vertical-scroll-proportion="0.0">
           <caret line="63" column="70" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
           <folding />
         </state>
@@ -1077,11 +1076,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/RH/Reportes/viewReportAdminByProforms.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70689654">
-          <caret line="215" column="33" selection-start-line="215" selection-start-column="33" selection-end-line="215" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.5017241">
+          <caret line="398" column="48" selection-start-line="398" selection-start-column="48" selection-end-line="398" selection-end-column="48" />
           <folding>
-            <element signature="e#3208#3230#0#HTML" expanded="true" />
-            <element signature="e#3958#3985#0#HTML" expanded="true" />
+            <element signature="e#3087#7287#0#HTML" expanded="false" />
+            <element signature="e#8232#8254#0#HTML" expanded="true" />
+            <element signature="e#8175#9082#0#HTML" expanded="false" />
+            <element signature="e#14126#14221#0#HTML" expanded="false" />
+            <element signature="e#16481#16779#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
