@@ -168,7 +168,6 @@
         function cambiar_estado(estado,id){
 
 
-
             switch (estado){
 
                 case "true" :
@@ -185,9 +184,6 @@
                     break;
             }
         }
-
-
-
 
 
 

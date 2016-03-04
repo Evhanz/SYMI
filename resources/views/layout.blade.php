@@ -308,7 +308,7 @@
             <!--Menu right: option list-->
             <ul class="sidebar-menu">
                 <li>
-                    <a href="#">
+                    <a href="{{route('inicio')}}">
                         <i class="fa fa-dashboard"></i> <span>Inicio</span>
                     </a>
                 </li>

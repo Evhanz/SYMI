@@ -7,6 +7,8 @@
  */
 
 namespace Symi\Repositories;
+use Symi\Entities\Area;
+use Symi\Entities\PersonalTareo;
 use Symi\Entities\Proforma;
 use Symi\Entities\EstadoProforma;
 use Symi\Entities\ProformaTareo;
@@ -164,7 +166,6 @@ class ProformaRep {
         return $estado;
     }
 
-
     public function getInitAlldata()
     {
         $proformas = Proforma::orderBy('id','desc')->with('area')->take(20)->get();
@@ -226,7 +227,6 @@ class ProformaRep {
         return EstadoProforma::find($id);
 
     }
-
 
     public function editEstado($idEstado,$tipo,$proforma,$fecha,$observacion){
 
@@ -334,6 +334,85 @@ class ProformaRep {
         }
 
         return $avance;
+
+    }
+
+
+    /*ganancias por proforma de unas fechas dadas*/
+    public function getGananciaRealRHPorAreaByFechas($f_i,$f_f){
+
+        $areas = Area::where('estado','=',1)->get();
+
+
+        /*de cada area sacamos el total*/
+        foreach($areas as $area){
+
+            /*primero obetenemos todas las proformas que fueron trabajadas en la fecha establecida*/
+            $area->proformas =  $this->getProformasByFechas($f_i,$f_f,$area->id);
+          //  $area->proformas = $this->getProformaByFechasbyAreasWithDetails($f_i,$f_f,$area->id);
+
+            /*luego sacamos el costo real que se pudo obetener de cada area */
+            $area->total = $this->getCostoAreadeAllProformas($area->proformas);
+        }
+        return $areas;
+
+    }
+
+
+    private function getProformasByFechas($f_i,$f_f,$area){
+
+
+
+        $proformas = PersonalTareo::join('proformas','persona_tareo.proforma_id','=','proformas.id')
+            ->join('tareos','persona_tareo.tareo_id','=','tareos.id')
+            ->where('tareos.area_id','=',$area)
+            ->where('tareos.fecha','>=',$f_i)
+            ->where('tareos.fecha','<=',$f_f)
+            ->where('proformas.numero','not like','%G%')
+            ->groupBy('proformas.numero')
+            ->get(['proformas.numero','proformas.monto_MO',\DB::raw('Sum(persona_tareo.h_trabajadas*costo_h) AS producto'),
+                \DB::raw('proformas.monto_MO - Sum(persona_tareo.h_trabajadas*costo_h)  AS res_real')]);
+
+        /*
+         * SELECT
+proformas.numero,
+Sum(persona_tareo.h_trabajadas*costo_h) AS producto,
+proformas.monto_MO,
+proformas.monto_MO - Sum(persona_tareo.h_trabajadas*costo_h)  AS res_real
+FROM
+persona_tareo
+INNER JOIN proformas ON persona_tareo.proforma_id = proformas.id
+INNER JOIN tareos ON persona_tareo.tareo_id = tareos.id
+WHERE
+tareos.fecha >= '2016-01-01' AND
+tareos.fecha <= '2016-01-31' AND
+tareos.area_id = 1 AND
+proformas.numero NOT LIKE '%G%'
+GROUP BY
+proformas.numero
+
+         *
+         *
+         * */
+
+        return $proformas;
+
+    }
+
+    /*scar la suma de todo es costo*/
+
+    private function getCostoAreadeAllProformas($proformas){
+
+        $suma = 0;
+
+        foreach($proformas as $proforma){
+
+            $suma += $proforma->res_real;
+
+
+        }
+
+        return $suma;
 
     }
 

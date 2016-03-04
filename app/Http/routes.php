@@ -12,7 +12,7 @@
 */
 
 //Route::get('/', 'WelcomeController@index');
-Route::get('/', 'WelcomeController@main');
+Route::get('/',['as'=>'inicio','uses'=>'WelcomeController@main']);
 
 Route::get('home', 'HomeController@index');
 
@@ -65,6 +65,8 @@ Route::get('proformas/getEstadoOfProforma/{id}',['as'=>'getEstadoOfProforma','us
 Route::post('proformas/regEstadoNew',['as'=>'regEstadoNew','uses'=>'ProformaController@regEstadoNew']);
 Route::get('proformas/getEstadoByID/{id}',['as'=>'getEstadoByID','uses'=>'ProformaController@getEstadoByID']);
 Route::post('proformas/updateEstado',['as'=>'updateEstado','uses'=>'ProformaController@updateEstado']);
+Route::get('proformas/getCostoOfAreaByFechas/{f_i}/{f_f}',
+	['as'=>'getCostoOfAreaByFechas','uses'=>'ProformaController@getCostoOfAreaByFechas']);
 
 
 /*----reporte de prforma*/

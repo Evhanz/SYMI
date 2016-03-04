@@ -284,6 +284,14 @@ class ProformaController extends Controller{
 
     }
 
+    public function getCostoOfAreaByFechas($f_i,$f_f){
+
+        $proformas = $this->proformaRep->getGananciaRealRHPorAreaByFechas($f_i,$f_f);
+
+        return \Response::json($proformas);
+
+    }
+
 
 
     
