@@ -68,18 +68,38 @@
                     <div class="box-header">
                         <!-- tools box -->
                         <div class="pull-right box-tools">
-                            <button class="btn btn-danger btn-sm refresh-btn" data-toggle="tooltip" title="Reload"><i class="fa fa-refresh"></i></button>
+                            <button ng-click="recargar_chart_consumo()" class="btn btn-danger btn-sm refresh-btn" data-toggle="tooltip" title="Reload"><i class="fa fa-refresh"></i></button>
                             <button class="btn btn-danger btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-danger btn-sm" data-widget='remove' data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div><!-- /. tools -->
                         <i class="fa fa-cloud"></i>
 
-                        <h3 class="box-title">Server Load</h3>
+                        <h3 class="box-title">Costo generado RRHH</h3>
                     </div><!-- /.box-header -->
-                    <div class="box-body no-padding">
+                    <div class="box-body ">
+
+                        <div class="row" >
+                            <div class="col-lg-2">
+                                <h5>Fechas</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <input class="form-control" type="date" id="f_ini_mayor_consumo">
+                            </div>
+                            <div class="col-lg-4">
+                                <input class="form-control" type="date" id="f_fin_mayor_consumo">
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-info" ng-click="getDataConsumoChartArea()"><i class="fa fa-search-minus"></i></button>
+                            </div>
+                        </div>
+
                         <div class="row" style="padding: 15px;">
                             <div id="canvas-area-consumo" class="col-lg-12">
                                 <canvas id="chart-area-consumo" width="300" height="300"/>
+                            </div>
+
+                            <div id="canvas-bar-consumo" class="col-lg-12">
+                                <canvas id="chart-bar-consumo" width="300" height="300"/>
                             </div>
 
                         </div><!-- /.row - inside box -->
@@ -204,9 +224,14 @@
 
         $scope.data_proform_chat=[];
         $scope.data_proform_for_fechas =[];
+
+        $scope.data_proform_consumo=[];
+        $scope.data_proform_for_fechas_consumo =[];
+
         var chartProformGanancia;
 
         $("#chart-bar-ganancia").hide();
+        $("#chart-bar-consumo").hide();
 
 
 
@@ -223,13 +248,109 @@
 
         };
 
+        $scope.recargar_chart_consumo = function () {
+            $scope.getDataConsumoChartArea();
+            $("#chart-bar-consumo").hide();
+            $("#canvas-area-consumo").show();
+
+        };
+
+        $scope.getDataConsumoChartArea = function(){
+
+
+
+
+            /*limpiamos el canvas*/
+
+            resetCanvas('chart-area-consumo','canvas-area-consumo');
+
+
+            /*traemos los datos de los inputs*/
+
+            var f_ini = $('#f_ini_mayor_consumo').val();
+            //f_ini = f_ini.split('-');
+            var f_fin = $('#f_fin_mayor_consumo').val();
+            //f_fin = f_fin.split('-')
+
+
+
+
+            $scope.data_proform_consumo=[];
+            $scope.data_proform_for_fechas_consumo =[];
+
+            $.get('http://localhost:200/SYMI/public/proformas/getCostoOfAreaByFechas/'+f_ini+'/'+f_fin, function (data) {
+                $scope.data_proform_for_fechas_consumo = data;
+
+
+                console.log(data);
+
+                var bandera = 0;
+                data.forEach(function(item){
+
+                    var color =0;
+                    switch (bandera){
+
+                        case 0: color = '#F7464A';
+                            break;
+                        case 1: color = '#46BFBD';
+                            break;
+                        case 2: color = '#FDB45C';
+                            break;
+                        case 3: color = '#949FB1';
+                            break;
+                        case 4: color = '#4D5360';
+                            break;
+                        case 5: color = '#F7462A';
+                            break;
+                    }
+
+                    var suma = 0;
+
+                    /*sumamos la cantiad consumida de toda el area*/
+                    item.proformas.forEach(function (i) {
+                       suma+= i.producto;
+                    });
+
+
+                    var obj = {value: suma,
+                        color:color,
+                        highlight: "#FF5A5E",
+                        label: item.descripcion};
+
+
+                    $scope.data_proform_consumo.push(obj);
+
+                    bandera ++;
+
+                });
+
+                var ctx = document.getElementById("chart-area-consumo").getContext("2d");
+                chartProformGanancia= new Chart(ctx).PolarArea($scope.data_proform_consumo, {
+                    responsive:true
+                });
+
+                document.getElementById("chart-area-consumo").onclick = function(evt){
+                    var activePoints = chartProformGanancia.getSegmentsAtEvent(evt);
+
+                    getDetailConsumo(activePoints[0].label);
+
+                    // => activePoints is an array of segments on the canvas that are at the same position as the click event.
+                };
+
+
+
+
+
+            });
+
+        };
+
 
         $scope.getDataProformChartArea = function (){
 
             /*limpiamos el canvas*/
 
             resetCanvas('chart-area','canvas-holder');
-
 
             /*traemos los datos de los inputs*/
 
@@ -289,6 +410,8 @@
 
                 document.getElementById("chart-area").onclick = function(evt){
                     var activePoints = chartProformGanancia.getSegmentsAtEvent(evt);
+
+                    console.log(activePoints[0].label);
 
                     getProformByDeTailGananciaReal(activePoints[0].label);
                     // => activePoints is an array of segments on the canvas that are at the same position as the click event.
@@ -360,6 +483,65 @@
 
             $("#chart-bar-ganancia").show();
             $("#canvas-holder").hide();
+
+
+        }
+
+
+        function getDetailConsumo(descripcion){
+            /*primero limpiamos el camvas*/
+
+            resetCanvas('chart-bar-consumo','canvas-bar-consumo');
+
+
+
+
+            var area = [];
+
+            var labels_proformas = [];
+            var resultado = [];
+
+            $scope.data_proform_for_fechas_consumo.forEach(function(item){
+
+                if(item.descripcion == descripcion)
+                    area = item;
+
+            });
+
+            area.proformas.forEach(function(item){
+
+                labels_proformas.push( item.numero);
+            });
+
+            area.proformas.forEach(function(item){
+
+                resultado.push( item.producto);
+            });
+
+
+            var data = {
+                labels: labels_proformas,
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(31,167,181,0.5)",
+                        strokeColor: "rgba(31,167,181,0.8)",
+                        highlightFill: "rgba(31,167,181,0.75)",
+                        highlightStroke: "rgba(31,167,181,1)",
+                        data: resultado
+                    }
+                ]
+            };
+
+
+            var ctx = document.getElementById("chart-bar-consumo").getContext("2d");
+            chartProformGanancia= new Chart(ctx).Bar(data, {
+                responsive:true
+            });
+
+
+            $("#chart-bar-ganancia").show();
+            $("#canvas-area-consumo").hide();
 
 
         }
