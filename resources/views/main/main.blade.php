@@ -278,7 +278,7 @@
             $scope.data_proform_consumo=[];
             $scope.data_proform_for_fechas_consumo =[];
 
-            $.get('http://localhost:200/SYMI/public/proformas/getCostoOfAreaByFechas/'+f_ini+'/'+f_fin, function (data) {
+            $.get('{{ URL::route('modProformas') }}'+'/getCostoOfAreaByFechas/'+f_ini+'/'+f_fin, function (data) {
                 $scope.data_proform_for_fechas_consumo = data;
 
 
@@ -365,7 +365,7 @@
             $scope.data_proforma_for_fechas=[];
             $scope.data_proform_chat=[];
 
-            $.get('http://localhost:200/SYMI/public/proformas/getCostoOfAreaByFechas/'+f_ini+'/'+f_fin, function (data) {
+            $.get('{{ URL::route('modProformas') }}'+'/getCostoOfAreaByFechas/'+f_ini+'/'+f_fin, function (data) {
                 $scope.data_proforma_for_fechas = data;
 
 
