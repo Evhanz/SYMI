@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proforma extends Model{
 
 	protected $fillable = array('numero','descripcion','monto_MO','maquinaria_equipo','materiales','f_inicio',
-        'n_dias','maquinaria_equipo','materiales','tipo_moneda');
+        'n_dias','maquinaria_equipo','materiales','tipo_moneda','h_proformadas');
 
 	public function area(){
         //$this->belongsTo('entitie', 'local_key', 'parent_key');

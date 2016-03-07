@@ -81,7 +81,8 @@ class ProformaRep {
             'n_dias' => 'required',
             'maquinaria_equipo' => 'required',
             'materiales' =>'required',
-            'tipo_moneda'=>'required'
+            'tipo_moneda'=>'required',
+            'h_proformadas'=>'required'
 
         ];
 
@@ -124,7 +125,8 @@ class ProformaRep {
             'n_dias' => 'required',
             'maquinaria_equipo' => 'required',
             'materiales' =>'required',
-            'tipo_moneda' => 'required'
+            'tipo_moneda' => 'required',
+            'h_proformadas' => 'required'
 
         ];
 
@@ -145,6 +147,7 @@ class ProformaRep {
             $proforma->n_dias = $data['n_dias'];
             $proforma->tipo_moneda = $data['tipo_moneda'];
             $proforma->area_id = $area;
+            $proforma->h_proformadas = $data['h_proformadas'];
             $proforma->save();
             return 1;
 

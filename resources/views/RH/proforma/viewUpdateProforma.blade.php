@@ -114,6 +114,18 @@
                                 </div>
 
                             </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label for="">Horas Proformadas</label>
+                                    <input  value="{{$proforma->h_proformadas}}" name="h_proformadas" id="h_proformadas" type="number" class="form-control" step="any">
+                                </div>
+                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4">
+
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-lg-12">
                                     <br>

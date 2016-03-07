@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3a13c975-c3f7-45ab-8324-fe9432f7ae2f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/main/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/main/main.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Logica/Entities/Proforma.php" afterPath="$PROJECT_DIR$/app/Logica/Entities/Proforma.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Logica/Repositories/ProformaRep.php" afterPath="$PROJECT_DIR$/app/Logica/Repositories/ProformaRep.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/RH/proforma/viewNewProforma.blade.php" afterPath="$PROJECT_DIR$/resources/views/RH/proforma/viewNewProforma.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/RH/proforma/viewUpdateProforma.blade.php" afterPath="$PROJECT_DIR$/resources/views/RH/proforma/viewUpdateProforma.blade.php" />
     </list>
     <ignored path="SYMI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,70 +31,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProformaRep.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProformaRep.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Logica/Repositories/ProformaRep.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="376" column="11" selection-start-line="376" selection-start-column="11" selection-end-line="391" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.85172415">
+              <caret line="151" column="21" selection-start-line="151" selection-start-column="21" selection-end-line="151" selection-end-column="21" />
               <folding>
-                <element signature="e#129#152#0#PHP" expanded="true" />
                 <element signature="e#308#368#0#PHP" expanded="false" />
                 <element signature="e#374#447#0#PHP" expanded="false" />
                 <element signature="e#491#769#0#PHP" expanded="false" />
                 <element signature="e#819#1067#0#PHP" expanded="false" />
                 <element signature="e#1073#1564#0#PHP" expanded="false" />
-                <element signature="e#1571#2572#0#PHP" expanded="false" />
-                <element signature="e#2578#3933#0#PHP" expanded="false" />
-                <element signature="e#3939#4258#0#PHP" expanded="false" />
-                <element signature="e#4264#4420#0#PHP" expanded="false" />
-                <element signature="e#4426#5646#0#PHP" expanded="false" />
-                <element signature="e#5652#5803#0#PHP" expanded="false" />
-                <element signature="e#5809#6029#0#PHP" expanded="false" />
-                <element signature="e#6035#6120#0#PHP" expanded="false" />
-                <element signature="e#6126#6435#0#PHP" expanded="false" />
+                <element signature="e#4086#4405#0#PHP" expanded="false" />
+                <element signature="e#4411#4567#0#PHP" expanded="false" />
+                <element signature="e#4573#5793#0#PHP" expanded="false" />
+                <element signature="e#5799#5950#0#PHP" expanded="false" />
+                <element signature="e#5956#6176#0#PHP" expanded="false" />
+                <element signature="e#6182#6267#0#PHP" expanded="false" />
+                <element signature="e#6273#6582#0#PHP" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProformaController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProformaController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.769231">
-              <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
-              <folding>
-                <element signature="e#133#167#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/main.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54137933">
-              <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="polar-area.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/componentes/chartjs/Chart.js-master/samples/polar-area.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="19" selection-start-line="49" selection-start-column="16" selection-end-line="52" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="56" column="43" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -138,14 +96,11 @@
         <option value="$PROJECT_DIR$/app/Console/Commands/alertContract.php" />
         <option value="$PROJECT_DIR$/app/Logica/Repositories/ContratoRep.php" />
         <option value="$PROJECT_DIR$/resources/views/RH/proforma/viewProformas.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/RH/proforma/viewNewProforma.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/RH/proforma/viewUpdateProforma.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/RH/Reportes/viewReporteProforma.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/RH/tareo/viewNewTareo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/RH/tareo/viewUpdateTareo.blade.php" />
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
         <option value="$PROJECT_DIR$/storage/logs/laravel-2016-02-09.log" />
-        <option value="$PROJECT_DIR$/app/Logica/Entities/Proforma.php" />
         <option value="$PROJECT_DIR$/resources/views/RH/Reportes/viewHorasTrabajadasByEmploy.blade.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/config/app.php" />
@@ -160,8 +115,11 @@
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProformaController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
-        <option value="$PROJECT_DIR$/app/Logica/Repositories/ProformaRep.php" />
         <option value="$PROJECT_DIR$/resources/views/main/main.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/RH/proforma/viewNewProforma.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/RH/proforma/viewUpdateProforma.blade.php" />
+        <option value="$PROJECT_DIR$/app/Logica/Entities/Proforma.php" />
+        <option value="$PROJECT_DIR$/app/Logica/Repositories/ProformaRep.php" />
       </list>
     </option>
   </component>
@@ -177,7 +135,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -205,6 +163,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -292,6 +251,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="RH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SYMI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SYMI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proforma" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -508,6 +493,10 @@
               <option name="myItemId" value="Logica" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -588,14 +577,13 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SYSTEMCR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../qr" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
     <property name="js.buildTools.grunt.node_interpreter" value="/usr/bin/node" />
@@ -688,10 +676,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23133236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23127754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -741,27 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.87928224">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/RH/proforma/viewProformas.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8205546">
-          <caret line="146" column="61" selection-start-line="146" selection-start-column="61" selection-end-line="146" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/RH/proforma/viewNewProforma.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6166395">
-          <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/RH/proforma/viewUpdateProforma.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0">
-          <caret line="135" column="8" selection-start-line="135" selection-start-column="8" selection-end-line="135" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -898,13 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Logica/Entities/Proforma.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.37037">
-          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/RH/Reportes/viewReporteGetProformasNoClosed.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.88091356">
@@ -1031,14 +991,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/componentes/chartjs/Chart.js-master/samples/polar-area.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="19" selection-start-line="49" selection-start-column="16" selection-end-line="52" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/componentes/chartjs/Chart.js-master/src/Chart.Bar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.85148513">
@@ -1046,35 +998,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Logica/Repositories/ProformaRep.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="376" column="11" selection-start-line="376" selection-start-column="11" selection-end-line="391" selection-end-column="16" />
-          <folding>
-            <element signature="e#129#152#0#PHP" expanded="true" />
-            <element signature="e#308#368#0#PHP" expanded="false" />
-            <element signature="e#374#447#0#PHP" expanded="false" />
-            <element signature="e#491#769#0#PHP" expanded="false" />
-            <element signature="e#819#1067#0#PHP" expanded="false" />
-            <element signature="e#1073#1564#0#PHP" expanded="false" />
-            <element signature="e#1571#2572#0#PHP" expanded="false" />
-            <element signature="e#2578#3933#0#PHP" expanded="false" />
-            <element signature="e#3939#4258#0#PHP" expanded="false" />
-            <element signature="e#4264#4420#0#PHP" expanded="false" />
-            <element signature="e#4426#5646#0#PHP" expanded="false" />
-            <element signature="e#5652#5803#0#PHP" expanded="false" />
-            <element signature="e#5809#6029#0#PHP" expanded="false" />
-            <element signature="e#6035#6120#0#PHP" expanded="false" />
-            <element signature="e#6126#6435#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AreaController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,13 +1009,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3810345">
           <caret line="267" column="66" selection-start-line="267" selection-start-column="27" selection-end-line="267" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55689657">
+          <caret line="306" column="33" selection-start-line="306" selection-start-column="33" selection-end-line="306" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProformaController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.769231">
+        <state vertical-scroll-proportion="0.70689654">
           <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
           <folding>
             <element signature="e#133#167#0#PHP" expanded="true" />
@@ -1096,19 +1030,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/componentes/chartjs/Chart.js-master/samples/polar-area.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58965516">
+          <caret line="52" column="19" selection-start-line="49" selection-start-column="16" selection-end-line="52" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
+        <state vertical-scroll-proportion="0.029310346">
           <caret line="56" column="43" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/main.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/RH/proforma/viewNewProforma.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54137933">
-          <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.40689656">
+          <caret line="124" column="34" selection-start-line="115" selection-start-column="27" selection-end-line="124" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/RH/proforma/viewUpdateProforma.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.884615">
+          <caret line="112" column="45" selection-start-line="112" selection-start-column="45" selection-end-line="112" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Logica/Entities/Proforma.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31206897">
+          <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/RH/proforma/viewProformas.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25344828">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Logica/Repositories/ProformaRep.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85172415">
+          <caret line="151" column="21" selection-start-line="151" selection-start-column="21" selection-end-line="151" selection-end-column="21" />
+          <folding>
+            <element signature="e#308#368#0#PHP" expanded="false" />
+            <element signature="e#374#447#0#PHP" expanded="false" />
+            <element signature="e#491#769#0#PHP" expanded="false" />
+            <element signature="e#819#1067#0#PHP" expanded="false" />
+            <element signature="e#1073#1564#0#PHP" expanded="false" />
+            <element signature="e#4086#4405#0#PHP" expanded="false" />
+            <element signature="e#4411#4567#0#PHP" expanded="false" />
+            <element signature="e#4573#5793#0#PHP" expanded="false" />
+            <element signature="e#5799#5950#0#PHP" expanded="false" />
+            <element signature="e#5956#6176#0#PHP" expanded="false" />
+            <element signature="e#6182#6267#0#PHP" expanded="false" />
+            <element signature="e#6273#6582#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
