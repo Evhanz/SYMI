@@ -27,6 +27,8 @@ class Kernel extends HttpKernel {
 		'auth' => 'symi\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'symi\Http\Middleware\RedirectIfAuthenticated',
+
+		'supadmin' => 'symi\Http\Middleware\supadmin',
 	];
 
 }

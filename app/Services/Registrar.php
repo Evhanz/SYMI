@@ -1,6 +1,6 @@
 <?php namespace symi\Services;
 
-use symi\User;
+use Symi\Entities\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

@@ -73,12 +73,12 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nombres</th>
-                                            <th>Profesion</th>
+                                            <th>Celular</th>
                                             <th>DNI</th>
                                             <th>Fotocheck</th>
                                             <th>Estado</th>
                                             <th>Area's</th>
-                                            <th colspan="2">Opciones</th>
+                                            <th colspan="3">Opciones</th>
 
                                         </tr>
                                     </thead>
@@ -87,7 +87,7 @@
                                         <tr>
                                             <td>{{ $persona->id }}</td>
                                             <td>{{ $persona->fullname }}</td>
-                                            <td>{{ $persona->profesion->descripcion }}</td>
+                                            <td>{{ $persona->celular}}</td>
                                             <td>{{ $persona->dni }}</td>
                                             <td>{{ $persona->fotocheck }}</td>
                                             <td>
@@ -112,13 +112,19 @@
 
                                             </td>
                                             <td>
+                                                <button onclick="showDataPerson('{{$persona->id}}')" class="btn btn-default">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+
+                                            </td>
+                                            <td>
                                                 <a href="{{ URL::route('updatePersonal',array('id'=>$persona->id))}}" class="btn btn-warning">
-                                                    Editar<i class="edit icon"></i>
+                                                   <i class="fa fa-edit"></i>
                                                 </a>
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger">
-                                                    Eliminar<i class="remove icon"></i>
+                                                    <i class="fa fa-times" ></i>
                                                 </button>
                                             </td>
 
@@ -139,6 +145,54 @@
             </div>
         </div>
     </div><!-- /.content-->
+
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="viewInfo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            Foto
+                        </div>
+                        <div class="col-lg-6">
+                           <div class="row">
+                               <div class="col-lg-12">
+                                   Nombres
+                                   <input id="txtNombres" type="text" class="form-control" readonly>
+                               </div>
+                               <div class="col-lg-6">
+                                   DNI
+                                   <input id="txtDni" type="text" class="form-control" readonly>
+                               </div>
+                               <div class="col-lg-6">
+                                   Telefono
+                                   <input id="txtTelefono" type="text" class="form-control" readonly>
+                               </div>
+                               <div class="col-lg-6">
+                                   Fotocheck
+                                   <input id="txtFotocheck" type="text" class="form-control" readonly>
+                               </div>
+                               <div class="col-lg-6">
+
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
 
@@ -231,6 +285,42 @@
             });
 
         });
+
+
+        function showDataPerson(id){
+
+
+            $.get( "{{route('personalMod')}}/get/"+id, function( data ) {
+
+               // console.log(data);
+
+                var persona = {
+                    nombres:data.nombres+" "+data.apellidoP+" "+data.apellidoM,
+                    dni:data.dni,
+                    telefono:data.celular,
+                    fotocheck:data.fotocheck
+
+                };
+
+                cargarDataModel(persona);
+
+            });
+
+            $('#viewInfo').modal('show');
+
+
+
+        }
+
+
+        function cargarDataModel(persona){
+
+            $('#txtNombres').val(persona.nombres);
+            $('#txtDni').val(persona.dni);
+            $('#txtTelefono').val(persona.telefono);
+            $('#txtFotocheck').val(persona.fotocheck);
+
+        }
 
 
 

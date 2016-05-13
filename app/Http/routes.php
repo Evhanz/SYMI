@@ -16,14 +16,44 @@ Route::get('/',['as'=>'inicio','uses'=>'WelcomeController@main']);
 
 Route::get('home', 'HomeController@index');
 
+Route::get('createUaser',['as'=>'createUaser','uses'=>'UserController@create_user']);
+
+
+
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', ['as' =>'auth/login', 'uses' => 'Auth\AuthController@postLogin']);
+Route::get('auth/logout', ['as' => 'auth/logout', 'uses' => 'Auth\AuthController@getLogout']);
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
+
+
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('marca', ['as' => 'marca', 'uses' => 'MarcaController@index']);
+
+	Route::group([
+		'middleware' => 'supadmin'
+	], function () {
+		Route::get('marca', ['as' => 'marca', 'uses' => 'MarcaController@index']);
+
+	});
+
+});
+
+
+
+
+
+///Route::get('marca', ['as' => 'marca', 'uses' => 'MarcaController@index']);
 
 
 //para RRHH - Personal
@@ -40,6 +70,7 @@ Route::get('personal/UpdateById/{id}',['as'=>'updatePersonal','uses'=>'PersonaCo
 Route::post('personal/getById/',['as'=>'getPersonalByID','uses'=>'PersonaController@getPersonalByID']); 
 Route::post('personal/updatePersonal',['as'=>'editPersonal','uses'=>'PersonaController@editPersonal']);
 Route::get('personal/changeState/{id}',['as'=>'changeState','uses'=>'PersonaController@changeState']);
+Route::get('personal/get/{id}',['as'=>'getPeronaById','uses'=>'PersonaController@getPeronaById']);
 
 
 
@@ -160,3 +191,6 @@ Route::get('contratos/getById/{id}',['as'=>'getContratoById','uses'=>'ContratoCo
 Route::get('helper/getPersonalOrderAll',['as'=>'prueba','uses'=>'HelperController@prueba']);
 Route::get('helper/sendMail',['as'=>'sendMail','uses'=>'HelperController@sendMail']);
 Route::get('helper/fecha',['as'=>'fecha','uses'=>'HelperController@fecha']);
+
+//importo las rutas de logistica
+require __DIR__ . '/Routes/logistica.php';

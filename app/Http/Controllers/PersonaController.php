@@ -147,6 +147,17 @@ class PersonaController extends Controller{
     }
 
 
+    public function getPeronaById($id)
+    {
+
+        $data = $this->personaRep->find($id);
+
+        return \Response::json($data);
+
+
+    }
+
+
 
 
 

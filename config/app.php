@@ -136,6 +136,9 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
+		/*aca para el componentes HTML*/
+		'Collective\Html\HtmlServiceProvider',
+
 		/*
 		 * Application Service Providers...
 		 */
@@ -196,6 +199,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
+		'Form'		=> 'Collective\Html\FormFacade',
+		'Html'		=> 'Collective\Html\HtmlFacade',
 
 	],
 

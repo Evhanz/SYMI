@@ -1,5 +1,7 @@
 <?php namespace symi\Http\Controllers;
 
+use Symi\Entities\User;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -36,5 +38,17 @@ class WelcomeController extends Controller {
     public function main(){
         return view('main/main');
     }
+
+
+	public function create_user(){
+
+		$user = new User();
+
+		$user->dni ='12345678';
+		$user->tipo = 'control';
+		$user->password = bcrypt('1234');
+
+		$user->save();
+	}
 
 }

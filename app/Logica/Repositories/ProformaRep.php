@@ -70,6 +70,7 @@ class ProformaRep {
     public function regProforma($data){
 
         $area = $data['area'];
+        $adjunto = $data['adjunto'];
 
 
         $rules=[
@@ -99,6 +100,15 @@ class ProformaRep {
             $proforma->area_id = $area;
 
             if($proforma->save()){
+                
+                if(!isEmpty($adjunto)||$adjunto!=null){
+
+                    $extension = strtolower($adjunto->getClientOriginalExtension());
+                    $fileName = $proforma->numero.'.'.$extension;
+                    $path = "subidas/proformas/";
+                    \Input::file('file')->move($path,$fileName);
+
+                }
 
                 $estado = $this->newEstado('creada',$proforma->id,date('Y-m-d'),'Se creo');
             }

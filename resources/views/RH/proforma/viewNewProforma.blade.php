@@ -118,7 +118,11 @@
                                     <label for="">Horas Proformadas</label>
                                     <input name="h_proformadas" id="h_proformadas" type="number" class="form-control" step="any">
                                 </div>
-                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4">
+                                    <label for="">Subir Adjunto</label>
+                                    <input type="file" class="form-control" name="adjunto" >
+
+                                </div>
                                 <div class="col-lg-4">
 
                                 </div>

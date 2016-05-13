@@ -22,9 +22,9 @@ class MarcaController extends Controller{
     public function index(){
 
 
-        $marca = $this->marcaRep->find(1)->toJson();
+        //$marca = $this->marcaRep->find(1)->toJson();
 
-        dd($marca);
+        dd("hola");
 
 
     }

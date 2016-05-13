@@ -105,7 +105,7 @@ new Morris.Line({
 /*========== evento UI ======*/
 $("#linkModProductos").click(function(){
     //$("#container-principal").fadeOut(1000);
-    $("#container-principal").load('mod-productos/index.html');
+    $("#container-principal").load('mod-Productos/index.html');
     //$("#container-principal").fadeIn(1000);
 
 });
