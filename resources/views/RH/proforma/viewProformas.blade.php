@@ -21,7 +21,7 @@
 
     <div style="padding-left:5px;">
         <div class="bs-callout bs-callout-info" id="callout-type-dl-truncate">
-            <h4>Módulo del Proformas </h4>
+            <h4>Módulo del Proformas - s</h4>
         </div>
     </div>
 
@@ -29,10 +29,26 @@
 
 @section('content')
 
+
+
+
     <div class="content" ng-app="app" ng-controller="MainController">
         <div class="row">
             <div class="col-lg-12">
-                <div class="box box-danger" >
+                <button uib-popover-template="dynamicPopover.templateUrl" popover-title="@{{dynamicPopover.title}}" type="button" class="btn btn-default">Popover With Template</button>
+
+                <script type="text/ng-template" id="myPopoverTemplate.html">
+                    <div>@{{dynamicPopover.content}}</div>
+                    <div class="form-group">
+                        <label>Popup Title:</label>
+                        <input type="text" ng-model="dynamicPopover.title" class="form-control">
+                    </div>
+                </script>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-success" >
                     <div class="box-header">
                     <!-- tools box -->
                         <div class="pull-right box-tools">
@@ -42,7 +58,7 @@
 
                         <h3 class="box-title">Lista de Todas las proformas</h3>
                     </div><!-- /.box-header -->
-                    <div class="box-body no-padding">
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <form ng-submit="enviarData()" method="post" class="form-inline">
@@ -87,8 +103,9 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Número</th>
-                                            <th>Descripcion</th>
+                                            <th colspan="2">Descripcion</th>
                                             <th>Área</th>
+                                            <th>OS</th>
                                             <th colspan="2">Opciones</th>
                                             <th>Estados</th>
 
@@ -98,8 +115,16 @@
                                         <tr ng-repeat="proforma in proformas">
                                             <td>@{{proforma.id}}</td>
                                             <td>@{{proforma.numero}}</td>
-                                            <td>@{{proforma.descripcion}}</td>
-                                            <td>@{{proforma.area.descripcion}}</td>
+                                            <td>@{{proforma.subdescripcion}}</td>
+                                            <td>
+                                                <button uib-popover="@{{proforma.descripcion}}" popover-trigger="mouseenter" type="button" class="btn btn-default">...</button>
+                                            </td>
+                                            <td>@{{proforma.area}}</td>
+                                            <td>
+                                                <a ng-click="addos(proforma.id)" class="btn btn-info">
+                                                    OS<i class="edit icon"></i>
+                                                </a>
+                                            </td>
                                             <td>
                                                 <a ng-click="editProforma(proforma.id)" class="btn btn-warning">
                                                     Editar<i class="edit icon"></i>
@@ -132,6 +157,10 @@
         </div>
 
 
+
+
+
+        <!-- Modal estados-->
 
         <div class="modal fade" id='modalState' >
             <div class="modal-dialog">
@@ -265,18 +294,80 @@
         </div><!-- /.modal -->
 
 
+        <!-- Modal Orden de Servicio -->
+
+        <div class="modal fade" id='modalOS' >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Modal Orden De Servicio </h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <input id="idProformaOS" type="hidden">
+
+
+                        <!-- form Add New Estado-->
+                        <form id="frmNewEstado" ng-submit="enviarDataOS()" method="post">
+
+                            <legend >Agregrar Orden De servicio</legend>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                            <label for="">Descripcion</label>
+                            <input ng-model="os.descripcion" name="descripcion" class="form-control" type="text" required>
+                            <label for="">Numero de Orden De Servicio</label>
+                            <input ng-model="os.numero" name="numero" class="form-control" type="text" required>
+                            <label for="">Numero Pedido</label>
+                            <input ng-model="os.pedido" name="n_pedido" class="form-control" type="text" required>
+                            <label for="">Monto</label>
+                            <input ng-model="os.monto" name="monto" class="form-control" type="text" required>
+                            <label for="">Observacion</label>
+                            <input ng-model="os.observacion" name="observacion" class="form-control" type="text" required>
+                            <br>
+                            <button class="btn btn-primary" > <i class="fa fa-save"></i> Guardar</button>
+
+                        </form>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                    </div>
+
+
+
+
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+
 
     </div><!-- /.content-->
 
 
-    <!-- Modal estados-->
+
 
 
 
     <script>
 
-        var app = angular.module("app",[]);
+        var app = angular.module("app",['ui.bootstrap']);
         app.controller("MainController", function($scope,$http,$window) {
+
+
+            $scope.dynamicPopover = {
+                content: 'Hello, World!',
+                templateUrl: 'myPopoverTemplate.html',
+                title: 'Title'
+            };
+
+
+
+
             /*declaracion de inicio*/
             $scope.area = 0; 
             var token = $('input[name="_token"]').attr('value');
@@ -297,15 +388,38 @@
                     .success(function(data){
 
                             if (data.length >= 1) {
-                                $scope.proformas = data;
+
+
+                                //$scope.proformas = data;
+
+                                $scope.proformas =[];
+                                data.forEach(function(item){
+                                    var sub = item.descripcion.substring(0, 20);
+
+                                    var proforma = {
+                                        id:item.id,
+                                        numero:item.numero,
+                                        subdescripcion:sub,
+                                        area:item.area.descripcion,
+                                        descripcion:item.descripcion
+                                    };
+
+                                    $scope.proformas.push(proforma);
+
+
+                                });
+
+
+                                console.log(data);
 
                             } else{
                                 //console.log(data);
+                                var sub = item.descripcion.substring(0, 20);
 
                                 $scope.proformas =[];
                                 var proforma = {
                                     id:data.id,
-                                    descripcion:data.descripcion,
+                                    subdescripcion:sub,
                                     area:data.area.descripcion
                                 };
                                 
@@ -360,6 +474,24 @@
                     .error(function(data) {
                             console.log(data);
                         });
+            };
+
+
+            $scope.enviarDataOS = function(){
+
+
+
+            };
+
+
+            $scope.addos = function(idProforma){
+
+
+
+                $('#idProformaOS').val(idProforma);
+
+                $('#modalOS').modal('show');
+
             };
 
             $scope.editProforma = function  (idProforma) {
@@ -478,7 +610,6 @@
 
             };
 
-
             function initFrmEstados(){
 
                 $("#frmNewEstado").hide();
@@ -531,6 +662,9 @@
                 return bandera;
 
             }
+
+
+
 
         });
 

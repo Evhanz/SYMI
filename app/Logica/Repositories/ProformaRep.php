@@ -83,7 +83,8 @@ class ProformaRep {
             'maquinaria_equipo' => 'required',
             'materiales' =>'required',
             'tipo_moneda'=>'required',
-            'h_proformadas'=>'required'
+            'h_proformadas'=>'required',
+            'utilidad'=>'min:0'
 
         ];
 
@@ -99,14 +100,16 @@ class ProformaRep {
             $proforma->f_fin = date('Y-m-d');
             $proforma->area_id = $area;
 
+
             if($proforma->save()){
                 
-                if(!isEmpty($adjunto)||$adjunto!=null){
+                if(!isset($adjunto)||$adjunto!=null){
 
                     $extension = strtolower($adjunto->getClientOriginalExtension());
                     $fileName = $proforma->numero.'.'.$extension;
-                    $path = "subidas/proformas/";
-                    \Input::file('file')->move($path,$fileName);
+                    $path = public_path() . '\subidas\proformas';
+                   // $path = "subidas/proformas/";
+                    $adjunto->move($path,$fileName);
 
                 }
 
@@ -136,7 +139,8 @@ class ProformaRep {
             'maquinaria_equipo' => 'required',
             'materiales' =>'required',
             'tipo_moneda' => 'required',
-            'h_proformadas' => 'required'
+            'h_proformadas' => 'required',
+            'utilidad'=>'min:0'
 
         ];
 

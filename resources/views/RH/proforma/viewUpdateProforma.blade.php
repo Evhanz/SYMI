@@ -45,7 +45,7 @@
         </div><!--/ end error messages -->
         <div class="row">
             <div class="col-lg-12">
-                <div class="box box-danger">
+                <div class="box box-info">
                     <div class="box-header">
                         <!-- tools box -->
                         <div class="pull-right box-tools">
@@ -56,7 +56,7 @@
                         <h3 class="box-title">Formulario de Actualizacion</h3>
 
                     </div><!-- /.box-header -->
-                    <div class="box-body no-padding">
+                    <div class="box-body ">
                         <form class="ui form" id="formulario" action="{{ URL::route('updateProforma') }}"method="post">
                             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                             <div class="row">
@@ -82,8 +82,24 @@
                                    value="{{$proforma->monto_MO}}" required="required">
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>Dias Proyectados</label>
-                                    <input type="number"  class="form-control" name="n_dias" value="{{$proforma->n_dias}}" step="any" required="required">
+                                    <label>Monto de Maquinarias y Equipos</label>
+                                    <input class="form-control" value="{{$proforma->maquinaria_equipo}}" type="number" name="maquinaria_equipo" step="any" required="required">
+
+
+
+                                     </div>
+                                <div class="col-lg-4">
+                                    <label>Monto de Materiales</label>
+                                    <input class="form-control" value="{{$proforma->materiales}}" type="number"  name="materiales" step="any" required="required">
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label for="">Utilidad</label>
+                                    <input  value="{{$proforma->utilidad}}" name="h_proformadas" id="h_proformadas" type="number" class="form-control" step="any">
+
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Área</label>
@@ -93,16 +109,6 @@
                                             <option value="{{$area->id}}">{{$area->descripcion}}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <label>Monto de Maquinarias y Equipos</label>
-                                    <input class="form-control" value="{{$proforma->maquinaria_equipo}}" type="number" name="maquinaria_equipo" step="any" required="required">
-                                </div>
-                                <div class="col-lg-4">
-                                    <label>Monto de Materiales</label>
-                                    <input class="form-control" value="{{$proforma->materiales}}" type="number"  name="materiales" step="any" required="required">
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Tipo de Moneda</label>
@@ -120,7 +126,10 @@
                                     <label for="">Horas Proformadas</label>
                                     <input  value="{{$proforma->h_proformadas}}" name="h_proformadas" id="h_proformadas" type="number" class="form-control" step="any">
                                 </div>
-                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4">
+                                    <label>Dias Proyectados</label>
+                                    <input type="number"  class="form-control" name="n_dias" value="{{$proforma->n_dias}}" step="any" required="required">
+                                </div>
                                 <div class="col-lg-4">
 
                                 </div>

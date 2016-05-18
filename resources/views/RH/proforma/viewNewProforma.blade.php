@@ -45,7 +45,7 @@
         </div><!--/ end error messages -->
         <div class="row">
             <div class="col-lg-12">
-                <div class="box box-danger">
+                <div class="box box-info">
                     <div class="box-header">
                         <!-- tools box -->
                         <div class="pull-right box-tools">
@@ -56,12 +56,12 @@
                         <h3 class="box-title">Formulario de Registro</h3>
 
                     </div><!-- /.box-header -->
-                    <div class="box-body no-padding">
-                        <form class="ui form" id="formulario" action="{{ URL::route('regProforma') }}"method="post">
+                    <div class="box-body ">
+                        <form class="ui form" enctype="multipart/form-data" id="formulario" action="{{ URL::route('regProforma') }}"method="post">
                             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label>Número</label>
+                                    <label>Número de MY</label>
                                     <input class="form-control" type="text"  name="numero" placeholder="Número" required="required">
                                 </div>
                                 <div class="col-lg-4">
@@ -80,8 +80,22 @@
                                     <input class="form-control" type="number" name="monto_MO" step="any" required="required">
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>Dias Proyectados</label>
-                                    <input class="form-control" type="number"  name="n_dias" step="any" required="required">
+                                    <label>Monto de Maquinarias y Equipos</label>
+                                    <input class="form-control" type="number" name="maquinaria_equipo" step="any" required="required">
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Monto de Materiales(Consumibles)</label>
+                                    <input class="form-control" type="number"  name="materiales" step="any" required="required">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Utilidad</label>
+                                    <input class="form-control" type="number" name="utilidad" step="any" required="required">
+
+
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Área</label>
@@ -91,16 +105,7 @@
                                             <option value="{{$area->id}}">{{$area->descripcion}}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <label>Monto de Maquinarias y Equipos</label>
-                                    <input class="form-control" type="number" name="maquinaria_equipo" step="any" required="required">
-                                </div>
-                                <div class="col-lg-4">
-                                    <label>Monto de Materiales</label>
-                                    <input class="form-control" type="number"  name="materiales" step="any" required="required">
+
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Tipo de Moneda</label>
@@ -118,13 +123,15 @@
                                     <label for="">Horas Proformadas</label>
                                     <input name="h_proformadas" id="h_proformadas" type="number" class="form-control" step="any">
                                 </div>
+
+                                <div class="col-lg-4">
+                                    <label>Dias Proyectados</label>
+                                    <input class="form-control" type="number"  name="n_dias" step="any" required="required">
+                                </div>
+
                                 <div class="col-lg-4">
                                     <label for="">Subir Adjunto</label>
                                     <input type="file" class="form-control" name="adjunto" >
-
-                                </div>
-                                <div class="col-lg-4">
-
                                 </div>
                             </div>
 

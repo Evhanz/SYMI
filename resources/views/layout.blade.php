@@ -20,8 +20,16 @@
     <!--Angular JS 1.2.19 -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
 
+    <script src="{{asset('js/plugins/angular/ui-bootstrap-tpls-1.3.2.min.js')}}" ></script>
+
+
+
+
     <!--Main JS del sistema -->
     <script src="{{ asset('js/main.js')}}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -399,8 +407,7 @@
 
 
 
-<!-- Bootstrap -->
-<script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('js/AdminLTE/ej.js')}}" type="text/javascript"></script>
 
