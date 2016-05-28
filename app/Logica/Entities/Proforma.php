@@ -27,6 +27,10 @@ class Proforma extends Model{
         return $this->hasMany('Symi\Entities\EstadoProforma','proforma_id','id');
     }
 
+    public function ordenServicio(){
+        return $this->hasMany('Symi\Entities\OrdenServicio','id_proforma','id');
+    }
+
     public function avance(){
         return $this->hasMany('Symi\Entities\ProformaTareo','proforma_id','id');
     }

@@ -185,7 +185,7 @@ class ProformaRep {
 
     public function getInitAlldata()
     {
-        $proformas = Proforma::orderBy('id','desc')->with('area')->take(20)->get();
+        $proformas = Proforma::orderBy('id','desc')->with(['area','ordenServicio'])->take(20)->get();
 
         return $proformas;
     }

@@ -35,15 +35,19 @@
     <div class="content" ng-app="app" ng-controller="MainController">
         <div class="row">
             <div class="col-lg-12">
+                <!--
                 <button uib-popover-template="dynamicPopover.templateUrl" popover-title="@{{dynamicPopover.title}}" type="button" class="btn btn-default">Popover With Template</button>
 
                 <script type="text/ng-template" id="myPopoverTemplate.html">
-                    <div>@{{dynamicPopover.content}}</div>
+
                     <div class="form-group">
                         <label>Popup Title:</label>
                         <input type="text" ng-model="dynamicPopover.title" class="form-control">
                     </div>
                 </script>
+
+                -->
+
             </div>
         </div>
         <div class="row">
@@ -101,45 +105,72 @@
                                 <table class="table" id="tableReq">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                           <!-- <th>Id</th>-->
                                             <th>Número</th>
                                             <th colspan="2">Descripcion</th>
                                             <th>Área</th>
                                             <th>OS</th>
-                                            <th colspan="2">Opciones</th>
-                                            <th>Estados</th>
+                                            <th>Opt</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="proforma in proformas">
-                                            <td>@{{proforma.id}}</td>
+                                           <!-- <td>@{{proforma.id}}</td>-->
                                             <td>@{{proforma.numero}}</td>
                                             <td>@{{proforma.subdescripcion}}</td>
                                             <td>
                                                 <button uib-popover="@{{proforma.descripcion}}" popover-trigger="mouseenter" type="button" class="btn btn-default">...</button>
                                             </td>
                                             <td>@{{proforma.area}}</td>
+                                            <td style="background-color:@{{ proforma.os_color }} " >@{{ proforma.n_os }}</td>
+
                                             <td>
-                                                <a ng-click="addos(proforma.id)" class="btn btn-info">
-                                                    OS<i class="edit icon"></i>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a ng-click="editProforma(proforma.id)" class="btn btn-warning">
-                                                    Editar<i class="edit icon"></i>
-                                                </a>    
-                                            </td>
-                                            <td>
-                                                <a ng-click="ver(proforma.id)" class="btn btn-info">
-                                                    ver<i class="remove icon"></i>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-default" ng-click="viewSeguimiento(proforma.id)">
-                                                    <i class="fa fa-eye"></i>
+
+                                                <button uib-popover-template="dynamicPopover.templateUrl" popover-placement="bottom"
+                                                        popover-title="Opciones" type="button" class="btn btn-default">
+
+                                                    <i class="fa fa-cog" aria-hidden="true"></i>
+
+
                                                 </button>
+
+                                                <script type="text/ng-template" id="myPopoverTemplate.html">
+
+                                                    <div class="content_popup">
+                                                        <a title="Orden De Servicio" ng-click="addos(proforma.id)" class="btn btn-primary">
+                                                           <!-- OS --><i class="fa fa-file-text" aria-hidden="true"></i>
+
+                                                        </a>
+
+                                                        <a title="Editar Proforma" ng-click="editProforma(proforma.id)" class="btn btn-warning">
+                                                          <!--  Editar --> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        </a>
+
+                                                        <a ng-click="ver(proforma.id)" class="btn btn-success" title="Reporte RRHH">
+                                                           <!-- ver --><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                                        </a>
+
+                                                    </div>
+                                                    <hr style="margin: 5px;padding: 0px;" >
+                                                    <div class="content_popup">
+                                                        <a title="Seguimiento de Estados" ng-click="viewSeguimiento(proforma.id)" class="btn btn-primary">
+                                                            <!-- Seguimiento de estados--><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+
+                                                        </a>
+
+
+
+                                                    </div>
+
+
+
+                                                </script>
+
                                             </td>
+
+
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -307,23 +338,52 @@
                     <div class="modal-body">
 
                         <input id="idProformaOS" type="hidden">
+                        <input type="hidden" id="idOS">
+                        <input type="hidden" id="tipo_form">
 
 
-                        <!-- form Add New Estado-->
-                        <form id="frmNewEstado" ng-submit="enviarDataOS()" method="post">
+                        <!-- form enviar data orden de servicio-->
+                        <form id="frmSentDataOS" method="post">
 
                             <legend >Agregrar Orden De servicio</legend>
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                            <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
                             <label for="">Descripcion</label>
-                            <input ng-model="os.descripcion" name="descripcion" class="form-control" type="text" required>
-                            <label for="">Numero de Orden De Servicio</label>
-                            <input ng-model="os.numero" name="numero" class="form-control" type="text" required>
-                            <label for="">Numero Pedido</label>
-                            <input ng-model="os.pedido" name="n_pedido" class="form-control" type="text" required>
-                            <label for="">Monto</label>
-                            <input ng-model="os.monto" name="monto" class="form-control" type="text" required>
-                            <label for="">Observacion</label>
-                            <input ng-model="os.observacion" name="observacion" class="form-control" type="text" required>
+                            <input ng-model="os.descripcion" id="os_descripcion" name="descripcion" class="form-control" type="text" required>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label for="">N° de Orden De Servicio</label>
+                                    <input ng-model="os.numero" id="os_numero" name="numero" class="form-control" type="text" required>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <label for="">Numero Pedido</label>
+                                    <input ng-model="os.pedido" id="os_npedido" name="n_pedido" class="form-control" type="text" required>
+
+                                </div>
+                                <div class="col-xs-4">
+                                    <label for="">Monto</label>
+                                    <input ng-model="os.monto" id="os_monto" name="monto" class="form-control" type="number" required>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label for="">Observación</label>
+                                    <input ng-model="os.observacion" id="os_observacion" name="observacion" class="form-control" type="text" required>
+                                </div>
+                                <div class="col-xs-2">
+                                    <label for="" >Color </label>
+                                    <input  ng-model="os.color" id="os_color"  name="color" class="form-control" type="color" required>
+
+                                </div>
+                                <div class="col-xs-6">
+                                    <label for="">Subir Adjunto</label>
+                                    <input id="file" type="file" class="form-control" name="adjunto" >
+                                </div>
+                            </div>
+
                             <br>
                             <button class="btn btn-primary" > <i class="fa fa-save"></i> Guardar</button>
 
@@ -346,6 +406,11 @@
 
 
 
+
+
+
+
+
     </div><!-- /.content-->
 
 
@@ -364,7 +429,6 @@
                 templateUrl: 'myPopoverTemplate.html',
                 title: 'Title'
             };
-
 
 
 
@@ -404,13 +468,16 @@
                                         descripcion:item.descripcion
                                     };
 
-                                    $scope.proformas.push(proforma);
+                                    if(item.orden_servicio.length >0){
+                                        proforma.n_os = item.orden_servicio[0].numero;
+                                        proforma. os_color = item.orden_servicio[0].color;
+                                    }
 
+                                    $scope.proformas.push(proforma);
 
                                 });
 
 
-                                console.log(data);
 
                             } else{
                                 //console.log(data);
@@ -451,17 +518,39 @@
                     .success(function(data){
 
                             if (data.length >= 1) {
-                                $scope.proformas = data;
+                                $scope.proformas =[];
+                                data.forEach(function(item){
+                                    var sub = item.descripcion.substring(0, 20);
+
+                                    var proforma = {
+                                        id:item.id,
+                                        numero:item.numero,
+                                        subdescripcion:sub,
+                                        area:item.area.descripcion,
+                                        descripcion:item.descripcion
+
+                                    };
+
+                                    $scope.proformas.push(proforma);
+
+
+                                });
 
                             } else{
                                 //console.log(data);
 
 
+                                var sub = data.descripcion.substring(0, 20);
+
                                 $scope.proformas =[];
                                 var proforma = {
+
                                     id:data.id,
-                                    descripcion:data.descripcion,
-                                    area:data.area.descripcion
+                                    numero:data.numero,
+                                    subdescripcion:sub,
+                                    area:data.area.descripcion,
+                                    descripcion:data.descripcion
+
                                 };
                                 
                                 $scope.proformas.push(proforma);
@@ -477,20 +566,49 @@
             };
 
 
-            $scope.enviarDataOS = function(){
-
-
-
-            };
-
-
+            //esto es para que se abra el modal de OS
             $scope.addos = function(idProforma){
-
-
 
                 $('#idProformaOS').val(idProforma);
 
                 $('#modalOS').modal('show');
+
+                $.get( "{{ URL::route('modOS') }}/getOsByIdProforma/"+idProforma, function( data ) {
+                   if(data.id<1 || data.id == null || data.id == undefined){
+
+                       $('#tipo_form').val('nuevo');
+
+                       $("#os_descripcion").val("");
+                       $("#os_numero").val("");
+                       $("#os_npedido").val("");
+                       $("#os_monto").val("");
+                       $("#os_color").val("");
+
+                   }else{
+
+
+                       $('#tipo_form').val('editar');
+                       $('#idOS').val(data.id);
+
+
+
+                       $("#os_descripcion").val(data.descripcion);
+                       $("#os_numero").val( data.numero);
+                       $("#os_npedido").val( data.n_pedido);
+                       $("#os_monto").val( parseFloat(data.monto));
+                       $("#os_color").val( data.color);
+
+                      // console.log(data.descripcion);
+
+
+                   }
+
+                });
+
+
+
+
+
 
             };
 
@@ -662,6 +780,87 @@
                 return bandera;
 
             }
+
+            $( "#frmSentDataOS" ).submit(function( event ) {
+
+                event.preventDefault();
+
+                $scope.enviarDataOS();
+
+            });
+
+
+            $scope.enviarDataOS = function enviar_data(){
+
+
+                var file;
+
+
+                if($scope.os.color ==null || $scope.os.color == undefined)
+                {
+
+                    $scope.os.color = "#FFFFFF";
+                    $("#os_color").val("#FFFFFF");
+
+                }
+
+                if( document.getElementById("file").files[0] == null ||
+                        document.getElementById("file").files[0] == undefined )
+                {
+                    file = '-';
+
+                }else{
+                    file = document.getElementById("file").files[0];
+                }
+
+
+                var formData = new FormData();
+
+                formData.append('_token',$('#_token').val());
+                formData.append('descripcion', $("#os_descripcion").val());
+
+                formData.append('numero', $("#os_numero").val());
+                formData.append('n_pedido', $("#os_npedido").val());
+                formData.append('monto', $("#os_monto").val());
+                formData.append('observacion', $('#os_observacion').val());
+                formData.append('id_proforma', $('#idProformaOS').val());
+                formData.append('color', $("#os_color").val());
+                formData.append('adjunto', file);
+
+                formData.append('tipo', $('#tipo_form').val());
+                formData.append('idOS',$("#idOS").val());
+
+
+
+                $.ajax({
+                    url         :   '{{ URL::route('regOS') }}',  //mention valid url
+                    cache       :   false,
+                    contentType :   false,
+                    processData :   false,
+                    data        :   formData,
+                    type        :   'post',
+                    success     :   function(data){
+
+
+                        console.log(data);
+
+                        if(data=='ok'){
+
+                            alert('Datos Correctos');
+                            $('#modalOS').modal('hide');
+                            initData();
+
+                        }
+
+
+
+
+                    }
+
+                });
+
+
+            };
 
 
 

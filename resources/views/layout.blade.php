@@ -18,7 +18,8 @@
     <script src="{{ asset('js/jquery-2.0.2.min.js')}}"></script>
 
     <!--Angular JS 1.2.19 -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+   <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 
     <script src="{{asset('js/plugins/angular/ui-bootstrap-tpls-1.3.2.min.js')}}" ></script>
 

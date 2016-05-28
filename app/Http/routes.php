@@ -194,3 +194,6 @@ Route::get('helper/fecha',['as'=>'fecha','uses'=>'HelperController@fecha']);
 
 //importo las rutas de logistica
 require __DIR__ . '/Routes/logistica.php';
+
+//importa las rutas para administracion
+require __DIR__ . '/Routes/administracion.php';
