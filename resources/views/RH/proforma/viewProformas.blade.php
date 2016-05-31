@@ -123,7 +123,7 @@
                                                 <button uib-popover="@{{proforma.descripcion}}" popover-trigger="mouseenter" type="button" class="btn btn-default">...</button>
                                             </td>
                                             <td>@{{proforma.area}}</td>
-                                            <td style="background-color:@{{ proforma.os_color }} " >@{{ proforma.n_os }}</td>
+                                            <td style="background-color:@{{ proforma.os_color }}; color: @{{ proforma.os_color_letra }}" >@{{ proforma.n_os }}</td>
 
                                             <td>
 
@@ -451,6 +451,8 @@
                         {_token : token})
                     .success(function(data){
 
+                            console.log(data);
+
                             if (data.length >= 1) {
 
 
@@ -468,9 +470,17 @@
                                         descripcion:item.descripcion
                                     };
 
-                                    if(item.orden_servicio.length >0){
-                                        proforma.n_os = item.orden_servicio[0].numero;
-                                        proforma. os_color = item.orden_servicio[0].color;
+                                    if(item.id_os >0 || item.id_os != null){
+                                        proforma.n_os = item.orden_servicio.numero;
+
+                                        if(item.orden_servicio.color == '#FFFFFF')
+                                        {
+                                            proforma.os_color_letra = "black";
+                                        }else{
+                                            proforma.os_color_letra = "white";
+                                        }
+
+                                        proforma.os_color = item.orden_servicio.color;
                                     }
 
                                     $scope.proformas.push(proforma);

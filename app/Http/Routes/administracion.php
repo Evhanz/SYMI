@@ -12,4 +12,4 @@ Route::get('os',['as'=>'modOS']);
 Route::post('os/regNewOS',['as'=>'regOS','uses'=>'OrdenServicioController@regOS']);
 Route::get('os/getOsByIdProforma/{id}',['as'=>'getOsByIdProforma','uses'=>'OrdenServicioController@getOsByIdProforma']);
 Route::get('os/viewAllOS',['as'=>'viewAllOS','uses'=>'OrdenServicioController@viewAllOS']);
-
+Route::get('os/viewNewOS',['as'=>'viewNewOS','uses'=>'OrdenServicioController@viewNewOS']);

@@ -51,6 +51,8 @@ class HelperController extends Controller{
         return \Response::json($proforma);
 
 
+
+
     }
 
     public function prueba(){

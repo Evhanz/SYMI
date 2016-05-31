@@ -16,14 +16,13 @@ class OrdenServicio extends Model
     protected $table="orden_servicio";
 
     protected $fillable = array('descripcion','numero','n_pedido','monto',
-        'color','id_proforma');
+        'color');
 
 
     public function proforma(){
         //$this->belongsTo('entitie', 'local_key', 'parent_key');
-        return $this->belongsTo('Symi\Entities\Proforma','id_proforma','id');
+        return $this->hasMany('Symi\Entities\Proforma','id_proforma','id');
     }
-
 
 
 }

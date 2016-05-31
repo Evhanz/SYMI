@@ -27,17 +27,27 @@ class OrdenServicioController extends Controller
 
     }
 
+    public function viewNewOS(){
+
+        return view('RH/os/viewRegOS');
+    }
+
 
     public function regOS()
     {
         $data = \Input::all();
 
+
+
+
         if($data['tipo']=='nuevo'){
+
 
             try{
                 $bandera =  $this->ordenServicioRep->regOrdenServicio($data);
 
-                if($bandera == "ok"){
+                if($bandera > 0){
+
 
                     return "ok";
 
@@ -47,11 +57,12 @@ class OrdenServicioController extends Controller
 
             }catch(\Exception $e){
 
-                return "error-'";
+                return "error-'".$e;
 
             }
 
-        }else{
+        }
+        else{
             try{
                 $bandera =  $this->ordenServicioRep->editOrdenServicio($data);
 

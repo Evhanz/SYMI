@@ -23,7 +23,12 @@
 
     <script src="{{asset('js/plugins/angular/ui-bootstrap-tpls-1.3.2.min.js')}}" ></script>
 
+    <!-- para tags -->
+    <!-- <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+     <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>-->
 
+    <link rel="stylesheet" href="{{asset('js/plugins/angular/ng-tags-input.min.css')}}">
+    <script src="{{asset('js/plugins/angular/ng-tags-input.min.js')}}" ></script>
 
 
     <!--Main JS del sistema -->
@@ -351,6 +356,18 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('viewProformas','1')}}" class="item sub"><i class="fa fa-angle-double-right"></i> Modulo Proforma</a></li>
                         <li><a href="{{route('viewTareo')}}" class="item sub"><i class="fa fa-angle-double-right"></i> Modulo Tareo</a></li>
+                    </ul>
+                </li><!--Proformas-->
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-laptop"></i>
+                        <span>Orden Servicio</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('viewAllOS')}}" class="item sub"><i class="fa fa-angle-double-right"></i> Modulo de OS</a></li>
+
                     </ul>
                 </li><!--Proformas-->
 

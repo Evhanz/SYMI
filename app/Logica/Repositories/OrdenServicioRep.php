@@ -9,6 +9,7 @@
 namespace Symi\Repositories;
 
 use Symi\Entities\OrdenServicio;
+use Symi\Entities\Proforma;
 
 class OrdenServicioRep
 {
@@ -35,6 +36,8 @@ class OrdenServicioRep
 
         /*sacamos los datos qu quedan fuera de validacion*/
 
+        $proforms = explode(',',$data['proformas']);
+
         $adjunto = $data['adjunto'];
         $observacion = $data['observacion'];
 
@@ -46,8 +49,7 @@ class OrdenServicioRep
             'numero'=>'required|unique:orden_servicio',
             'n_pedido'=>'required',
             'monto'=>'required',
-            'color'=>'required',
-            'id_proforma'=>'required'
+            'color'=>'required'
         ];
 
         $data = array_only($data,array_keys($rules));
@@ -71,7 +73,15 @@ class OrdenServicioRep
 
             $os->save();
 
-            return "ok";
+
+            foreach($proforms as $item){
+
+                $this->updateProformaByOS($os->id,$item);
+
+            };
+
+
+            return $os->id;
 
 
 
@@ -80,6 +90,12 @@ class OrdenServicioRep
         }
 
 
+
+    }
+
+    public function updateProformaByOS($idOS,$n_proforma)
+    {
+        $var = Proforma::where('numero','=',$n_proforma)->update(['id_os' => $idOS]);
 
     }
 

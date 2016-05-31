@@ -44,7 +44,7 @@
                     </div><!-- /.box-header -->
                     <div class="box-body ">
                         <div class="row">
-                            <div class="col-lg-7">
+                            <div class="col-lg-12">
                                 <form class="form-inline">
                                     <div class="form-group">
                                         <label>Descripcion</label>
@@ -230,7 +230,7 @@
 
             $('#btnNuevo').click(function(e){
                 e.preventDefault();
-                location.href='{{ URL::route('viewNewPersonal') }}';
+                location.href='{{ URL::route('viewNewOS') }}';
             });
 
             $("#btnBuscar").click(function(e){

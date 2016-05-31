@@ -22,18 +22,20 @@ class Proforma extends Model{
         //$this->belongsTo('entitie', 'local_key', 'parent_key');
         return $this->belongsTo('Symi\Entities\Area','area_id','id');
     }
+    public function ordenServicio(){
+        //$this->belongsTo('entitie', 'local_key', 'parent_key');
+        return $this->belongsTo('Symi\Entities\OrdenServicio','id_os','id');
+    }
 
     public function estados(){
         return $this->hasMany('Symi\Entities\EstadoProforma','proforma_id','id');
     }
 
-    public function ordenServicio(){
-        return $this->hasMany('Symi\Entities\OrdenServicio','id_proforma','id');
-    }
-
     public function avance(){
         return $this->hasMany('Symi\Entities\ProformaTareo','proforma_id','id');
     }
+
+
 
     public function getSubdescripcionAttribute(){
 
