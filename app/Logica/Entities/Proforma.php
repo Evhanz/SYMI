@@ -22,6 +22,7 @@ class Proforma extends Model{
         //$this->belongsTo('entitie', 'local_key', 'parent_key');
         return $this->belongsTo('Symi\Entities\Area','area_id','id');
     }
+
     public function ordenServicio(){
         //$this->belongsTo('entitie', 'local_key', 'parent_key');
         return $this->belongsTo('Symi\Entities\OrdenServicio','id_os','id');
@@ -34,8 +35,6 @@ class Proforma extends Model{
     public function avance(){
         return $this->hasMany('Symi\Entities\ProformaTareo','proforma_id','id');
     }
-
-
 
     public function getSubdescripcionAttribute(){
 

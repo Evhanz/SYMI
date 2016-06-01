@@ -33,7 +33,6 @@ class OrdenServicioRep
     public function regOrdenServicio($data)
     {
 
-
         /*sacamos los datos qu quedan fuera de validacion*/
 
         $proforms = explode(',',$data['proformas']);

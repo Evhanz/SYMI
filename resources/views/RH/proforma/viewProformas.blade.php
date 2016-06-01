@@ -138,11 +138,13 @@
                                                 <script type="text/ng-template" id="myPopoverTemplate.html">
 
                                                     <div class="content_popup">
+
+                                                        <!--
                                                         <a title="Orden De Servicio" ng-click="addos(proforma.id)" class="btn btn-primary">
-                                                           <!-- OS --><i class="fa fa-file-text" aria-hidden="true"></i>
+                                                          <i class="fa fa-file-text" aria-hidden="true"></i>
 
                                                         </a>
-
+                                                         OS -->
                                                         <a title="Editar Proforma" ng-click="editProforma(proforma.id)" class="btn btn-warning">
                                                           <!--  Editar --> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                         </a>
@@ -225,7 +227,6 @@
                                 <td>@{{ estado.fecha }}</td>
                                 <td>@{{ estado.observacion }}</td>
                                 <td ng-if=" estado.tipo !== 'creada' && estado.tipo !== 'proceso' ">
-
                                     <button class="btn btn-warning" ng-click="editEstado(estado.id)">
                                         <i class="fa fa-pencil"></i>
                                     </button>
@@ -249,25 +250,32 @@
                             <label for="tipo">Tipo</label>
                             <select class="form-control" name="tipo" id="" ng-model="tipo" required>
                                 <option value="">Ninguno</option>
-                                <option value="standby">standby</option>
-                                <option value="facturada">facturada</option>
-                                <option value="finalizada">finalizada</option>
+                                <option value="notificada">Notificada</option>
+                                <option value="por facturar">Por Facturar</option>
+                                <option value="facturada">Facturada</option>
+                                <option value="finalizada">Finalizada</option>
                             </select>
 
                             <label for="">Fecha</label>
                             <input ng-model="fecha" name="fecha" class="form-control" type="date" required>
 
+                            <span ng-if=" tipo === 'notificada' ">
+                                <label for="observacion">Número</label>
+                                <input ng-model="numero" class="form-control" name="observacion" type="number" required>
+                            </span>
                             <span ng-if=" tipo === 'facturada' ">
                                 <label for="observacion">Monto Facturado %</label>
-                                <input ng-model="$parent.observacion" class="form-control" name="observacion" type="number" required>
+                                <input ng-model="$parent.Upobservacion" class="form-control" name="observacion" type="number" required>
                             </span>
                             <span ng-if=" tipo !== 'facturada' ">
-                                <label for="observacion">Observacion</label>
+                                <label for="observacion">Observación</label>
                                 <textarea ng-model="$parent.observacion" class="form-control" name="observacion" id="" cols="5" rows="2" required>
                                 </textarea>
                             </span>
+
+
                             <br>
-                            <button class="btn btn-primary" > <i class="fa fa-save"></i> Guardar</button>
+                            <button class="btn btn-primary" > <i class="fa fa-save"></i>Guardar</button>
 
                         </form>
 
@@ -287,14 +295,17 @@
                                 <option value="facturada">facturada</option>
                                 <option value="finalizada">finalizada</option>
                             </select>
-
+                            <span ng-if=" Uptipo === 'notificada' ">
+                                <label for="observacion">Numero</label>
+                                <input ng-model="numero" class="form-control" name="observacion" type="number" required>
+                            </span>
                             <span ng-if=" Uptipo === 'facturada' ">
                                 <label for="observacion">Monto Facturado %</label>
                                 <input ng-model="$parent.Upobservacion" class="form-control" name="observacion" type="number" required>
                             </span>
 
                             <span ng-if=" Uptipo !== 'facturada' ">
-                                <label for="observacion">Observacion</label>
+                                <label for="observacion">Observación</label>
                                 <textarea ng-model="$parent.Upobservacion" class="form-control" name="observacion" id="" cols="5" rows="2" required>
                                 </textarea>
                             </span>
